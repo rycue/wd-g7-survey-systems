@@ -112,8 +112,6 @@ git clone https://github.com/rycue/wd-g7-survey-systems
 
 ---
 
-    ## Contributors and Responsibilities
-
 ## Contributors and Development Responsibilities
 
 | Name | Responsibilities |
