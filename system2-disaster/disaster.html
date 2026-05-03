@@ -4,7 +4,35 @@
     <title>Survey Form</title>
   </head>
   <body>
-    <h1>Survey Form</h1>
+    <h2>Introduction</h2>
+    <p>
+      The Disaster Preparedness Survey System is designed to collect important
+      information from individuals and households regarding their level of
+      readiness for natural and human-made disasters. The data gathered will
+      help communities, researchers, and organizations better understand current
+      preparedness levels and identify areas for improvement.
+    </p>
+    <p>
+      The primary purpose of this survey is to support academic research by
+      assessing awareness, resources, and preparedness actions related to
+      disasters such as typhoons, floods, earthquakes, and other emergencies.
+      The results will be used to develop recommendations and contribute to
+      disaster risk reduction and management studies.
+    </p>
+    <h2>Privacy Notice</h2>
+    <p>
+      Your privacy is important to us. All information collected in this survey
+      will be used strictly for school research purposes only. The data gathered
+      will be handled responsibly and will not be used in any way that violates
+      applicable laws and regulations. Personal information will be kept
+      confidential and will only be accessed by the researchers involved in this
+      study. Any results or reports will present data in a summarized form and
+      will not include personally identifiable information. Participation in
+      this survey is voluntary, and you may choose not to answer any question or
+      withdraw at any time.
+    </p>
+
+    <h3>Survey Form</h3>
 
     <form>
       <label for="fname"> Full name: </label><br />
@@ -46,7 +74,6 @@
         name="household"
         value="Kindly provide your household size"
       /><br />
-
       <p>
         Which of the following are present in your household? (Check all that
         apply):
@@ -74,6 +101,91 @@
         <option value="house4">others (please specify)</option>
         <option value="house5">5</option>
       </select>
+
+      <fieldset>
+        <legend>Information Sources</legend>
+        <input type="checkbox" id="source1" name="source1" value="tv" />
+        <label for="source1"> Television (TV)</label><br />
+        <input type="checkbox" id="source2" name="source2" value="radio" />
+        <label for="source2"> Radio </label><br />
+        <input
+          type="checkbox"
+          id="source3"
+          name="source3"
+          value="socialmedia"
+        />
+        <label for="source3"> Social Media</label><br />
+        <input type="checkbox" id="source4" name="source4" value="sms" />
+        <label for="source4"> Short Message Service(SMS)</label><br />
+      </fieldset>
+
+      <fieldset>
+        <legend>Emergency Kit Checklist</legend>
+        <input type="checkbox" id="source1" name="source1" value="firstaid" />
+        <label for="source1"> First Aid </label><br />
+        <input type="checkbox" id="source2" name="source2" value="flashlight" />
+        <label for="source2"> Flashlight </label><br />
+        <input type="checkbox" id="source3" name="source3" value="food" />
+        <label for="source3"> Food </label><br />
+        <input type="checkbox" id="source4" name="source4" value="water" />
+        <label for="source4"> Water</label><br />
+        <input type="checkbox" id="source5" name="source5" value="powerbank" />
+        <label for="source5"> Power Bank</label><br />
+      </fieldset>
+
+      <h3>Household Readiness</h3>
+      <table>
+        <tr>
+          <th></th>
+          <th>YES</th>
+          <th>NO</th>
+        </tr>
+
+        <tr>
+          <th>Document Protection</th>
+          <th><input type="checkbox" id="cb1" name="dp" value="doc" /></th>
+          <th><input type="checkbox" id="cb2" name="dp" value="doc" /></th>
+        </tr>
+
+        <tr>
+          <th>Meeting Point</th>
+          <th><input type="checkbox" id="cb1" name="dp" value="doc" /></th>
+          <th><input type="checkbox" id="cb2" name="dp" value="doc" /></th>
+        </tr>
+
+        <tr>
+          <th>Evacuation Center Awareness</th>
+          <th><input type="checkbox" id="cb1" name="dp" value="doc" /></th>
+          <th><input type="checkbox" id="cb2" name="dp" value="doc" /></th>
+        </tr>
+
+        <tr>
+          <th>Emergency Contacts Availability</th>
+          <th><input type="checkbox" id="cb1" name="dp" value="doc" /></th>
+          <th><input type="checkbox" id="cb2" name="dp" value="doc" /></th>
+        </tr>
+
+        <tr>
+          <th>Offline Map Access</th>
+          <th><input type="checkbox" id="cb2" name="dp" value="doc" /></th>
+          <th><input type="checkbox" id="cb3" name="dp" value="doc" /></th>
+        </tr>
+
+        <tr>
+          <th>Alert System Subscription</th>
+          <th><input type="checkbox" id="cb1" name="dp" value="doc" /></th>
+          <th><input type="checkbox" id="cb2" name="dp" value="doc" /></th>
+        </tr>
+      </table>
     </form>
+    <h3>Past disaster experience</h3>
+    <label for="message">Your Message:</label><br />
+    <textarea id="message" name="message" rows="4" cols="50">
+Enter your text here...
+	</textarea
+    >
+    <br />
+    <input type="submit" value="Submit" /><br />
+    <input type="submit" value="Print / Download" />
   </body>
 </html>
