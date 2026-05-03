@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <h1>Survey Form</h1>
+
+    <form>
+      <label for="fname"> Full name: </label><br />
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        value="Kindly provide your name"
+      /><br />
+      <br />
+      <label for="address">Address:</label><br />
+      <input
+        type="text"
+        id="address"
+        name="address"
+        value="Kindly provide your address"
+      /><br />
+      <br />
+      <label for="contact">Contact Number:</label><br />
+      <input
+        type="text"
+        id="contact"
+        name="contact"
+        value="Kindly provide your contact number"
+      /><br />
+      <br />
+      <label for="email">Email (optional):</label><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value="Kindly provide your email"
+      /><br />
+      <br />
+      <label for="household">Household Size:</label><br />
+      <input
+        type="number"
+        id="household"
+        name="household"
+        value="Kindly provide your household size"
+      /><br />
+
+      <p>
+        Which of the following are present in your household? (Check all that
+        apply):
+      </p>
+      <input type="checkbox" id="comp1" name="interest1" value="Children" />
+      <label for="comp1"> Children (0-17 years)</label><br />
+      <input type="checkbox" id="comp2" name="interest2" value="Adults" />
+      <label for="comp2"> Adults (18-59 years)</label><br />
+      <input type="checkbox" id="comp3" name="interest3" value="Elderly" />
+      <label for="comp3"> Elderly (60+ years)</label><br />
+      <input type="checkbox" id="comp4" name="interest4" value="PWD" />
+      <label for="comp4"> Persons with Disabilities (PWD)</label><br />
+      <input type="checkbox" id="comp5" name="interest5" value="Pets" />
+      <label for="comp5"> Pets</label><br /><br />
+
+      <label for="housetype"
+        >What type of housing does your household live in? (optional)</label
+      >
+      <br />
+      <select id="housetype" name="household">
+        <option value="">-- Select an option --</option>
+        <option value="house1">Single-story</option>
+        <option value="house2">High-rise</option>
+        <option value="house3">Informal settlement</option>
+        <option value="house4">others (please specify)</option>
+        <option value="house5">5</option>
+      </select>
+    </form>
+  </body>
+</html>
