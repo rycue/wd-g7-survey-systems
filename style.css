@@ -215,6 +215,10 @@ a {
   gap: 0.9rem;
 }
 
+section {
+  margin-top: 1.25em;
+}
+
 .section-label {
   font-family: var(--font-body);
   font-size: 0.72rem;
@@ -492,5 +496,71 @@ a {
 
   .footer {
     padding: 0.9rem 1rem;
+  }
+}
+
+/* Developer section */
+.developer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0.6rem 0 1.2rem;
+}
+.developer-card {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 0.95rem;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: var(--maroon);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+img {
+  border-radius: var(--radius-sm);
+}
+.developer-body {
+  flex: 1;
+}
+.developer-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--maroon-dk);
+  margin-bottom: 0.18rem;
+}
+.developer-role {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .developer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .developer-grid {
+    grid-template-columns: 1fr;
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 0.85rem;
   }
 }
