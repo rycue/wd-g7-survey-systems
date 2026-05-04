@@ -1,7 +1,10 @@
 :root {
   --market-brown: #5d4037;
+  --market-light-brown: #a1887f;
   --market-tan: #fdfaf6;
+  --market-light: #faf3e8;
   --market-border: #d7ccc8;
+  --market-gold: #ad8a58;
   --admin-bg: #fffbf0;
   --success: #2e7d32;
   --warning: #c62828;
@@ -14,11 +17,25 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #e8ddd0;
+  /* background-image: repeating-linear-gradient(
+    90deg,
+    transparent 1px,
+    rgba(192, 137, 82, 0.591) 16px,
+    rgba(152, 107, 65, 0.667) 12px
+  ); */
+  background-image: url(https://scontent.fmnl33-4.fna.fbcdn.net/v/t1.15752-9/686915793_1655211725564383_6895736074034490857_n.png?_nc_cat=106&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEkBPW7xezVC7vlKWyvA0RlLk6ctTr_6DcuTpy1Ov_oNyqpTz7ebgLTMdB8FXWhy-cfrCjda2gyGXJU6QZI1UoU&_nc_ohc=SL53-scBWBcQ7kNvwEvAPaH&_nc_oc=AdoLuKlVABaRbRLXWbSGHcuoVjn9rFcKpw6M4cHydgLMC-wD_FNdDn6wfBK5Z2OErLw&_nc_zt=23&_nc_ht=scontent.fmnl33-4.fna&_nc_ss=7b2a8&oh=03_Q7cD5QEy3CKomJ6CI7NcRyDI2VAjGSPiSb-hHHQFgAz57orRdA&oe=6A1EF494);
+  background-size: contain;
+  background-repeat: repeat;
+  background-position: center;
+  background-blend-mode: multiply;
   color: #3e2723;
   line-height: 1.6;
   padding: 20px;
 }
 
+/*--------------
+Form and Layout 
+----------------*/
 .form-container {
   max-width: 800px;
   margin: 20px auto;
@@ -28,23 +45,44 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-header h1 {
-  color: var(--market-brown);
+.form-section b {
+  color: var(--warning);
+}
+
+.form-section i {
+  color: var(--market-light-brown);
+  font-weight: 600;
+  font-size: small;
+}
+
+.form-header {
+  background-color: var(--market-brown);
+  color: white;
   text-align: center;
-  border-bottom: 2px solid var(--market-brown);
-  padding-bottom: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  border-bottom: var(--market-gold) 5px solid;
+  margin: 20px auto;
+}
+
+.form-header h1 {
+  color: #fbfbfb;
+  text-align: center;
   margin-bottom: 20px;
   text-transform: uppercase;
+  text-shadow: black 1px 1px 2px;
   letter-spacing: 1px;
 }
 
 .intro-box {
   font-size: 0.95rem;
-  background: var(--market-tan);
+  background: var(--market-light);
   padding: 20px;
   border-radius: 6px;
   border: 1px solid var(--market-border);
+  border-left: 4px solid var(--market-brown);
   margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 5px;
 }
 
 .form-section {
@@ -53,6 +91,7 @@ header h1 {
   border-radius: 6px;
   border: 1px solid var(--market-border);
   background: var(--market-tan);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 5px;
   padding: 20px;
 }
 
@@ -78,8 +117,12 @@ header h1 {
 
 .input-group {
   width: 100%;
+  padding: 10px;
 }
 
+/*--------------
+Form Elements
+----------------*/
 label {
   display: block;
   font-weight: bold;
@@ -103,6 +146,14 @@ select {
   transition: border-color 0.2s;
 }
 
+input[type="file"] {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--market-border);
+  background: white;
+  padding: 10px 15px;
+}
+
 input:focus,
 select:focus {
   outline: none;
@@ -110,47 +161,102 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(93, 64, 55, 0.1);
 }
 
-.check-row,
 .radio-row {
-  display: flex;
-  flex-wrap: wrap;
   gap: 15px;
-  background: #fff;
+  background: white;
   padding: 12px;
   border: 1px solid var(--market-border);
   border-radius: 5px;
 }
 
 .check-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 0;
+  display: block;
+  background: white;
+  border: 1px solid var(--market-border);
+  border-radius: 5px;
+  position: relative;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .check-item input,
-.check-row input,
 .radio-row input {
   cursor: pointer;
 }
 
+.agreement-check {
+  margin-top: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--market-border);
+  background: white;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 10px;
+  width: 97%;
+  padding: 10px;
+}
+
+select#business-type {
+  height: 45px;
+  background-size: 15px;
+  appearance: none;
+  cursor: pointer;
+}
+
+select#business-type:hover {
+  border-color: var(--market-brown);
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 20px;
+  background: white;
+  border: 1px solid var(--market-border);
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 5px;
+}
+
+.check-grid label {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.check-grid input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .check-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*--------------
+Legal and Result Sections
+----------------*/
 .legal-box {
-  background-color: white;
+  background-color: rgba(243, 238, 238, 0.765);
   border: 1px solid var(--market-border);
   padding: 15px;
-  height: 150px;
-  overflow-y: scroll;
+  margin: 20px 0;
+  height: 200px;
   font-size: 0.9rem;
   line-height: 1.5;
-  margin-bottom: 15px;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
-.legal-box p {
-  margin-bottom: 10px;
-}
-
-/* Buttons and Actions */
+/*--------------
+Actions and Buttons
+----------------*/
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -191,17 +297,9 @@ select:focus {
   transform: scale(0.98);
 }
 
-.margin-10 {
-  margin-top: 10px;
-}
-
-@media (max-width: 600px) {
-  .grid-row {
-    grid-template-columns: 2fr;
-  }
-}
-
-/* Table Layout */
+/*--------------
+Table and Result 
+----------------*/
 .table-responsive {
   overflow-x: auto;
   margin-top: 20px;
@@ -245,7 +343,7 @@ select:focus {
 
 /* Warning highlights for non-compliant vendors */
 .warning-row {
-  background-color: #ffcdd2 !important; /* Soft red highlight */
+  background-color: #ffcdd2 !important;
 }
 
 .status-success {
