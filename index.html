@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Community Survey Portal — access the Public Market Vendor Registration and Disaster Preparedness Survey systems."
+    />
+    <title>Community Survey Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,500&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- HEADER -->
+      <header class="header" role="banner">
+        <div class="header__inner">
+          <span class="header__eyebrow">
+            <span class="header__dot" aria-hidden="true"></span>
+            Community Information Portal
+          </span>
+          <h1 class="header__title">Survey Systems</h1>
+          <p class="header__desc">
+            Select one of the two community systems below to get started.
+          </p>
+        </div>
+      </header>
+
+      <!-- MAIN -->
+      <main id="main-content" class="main">
+        <section aria-labelledby="systems-heading">
+          <h2 id="systems-heading" class="section-label">
+            <span>Available Systems</span>
+          </h2>
+
+          <div class="card-row">
+            <!-- Card 1: Vendor Registration -->
+            <article class="card" aria-labelledby="card1-title">
+              <div class="card__top">
+                <img
+                  class="card__photo"
+                  src="assets/public-market-hangar.webp"
+                  alt="Inside a busy public market with vendors and shoppers walking through stalls."
+                />
+              </div>
+              <div class="card__body">
+                <p class="card__num" aria-label="System 1">System 1</p>
+                <h3 id="card1-title" class="card__title">
+                  Public Market Vendor Registration
+                </h3>
+                <p class="card__desc">
+                  Register your stall details, vendor information, and product
+                  category in a quick, organized digital form built for market
+                  vendors.
+                </p>
+                <a
+                  class="card__btn"
+                  href="public-market-vendor-registration.html"
+                  aria-label="Go to Public Market Vendor Registration"
+                >
+                  Open Registration
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 7h10M7.5 2.5l4.5 4.5-4.5 4.5"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Card 2: Disaster Preparedness -->
+            <article class="card" aria-labelledby="card2-title">
+              <div class="card__top">
+                <img
+                  class="card__photo"
+                  src="assets/disaster-preparedness.jpg"
+                  alt="A person packing an emergency go-bag with supplies including canned food, water bottles, and a first aid kit."
+                />
+              </div>
+              <div class="card__body">
+                <p class="card__num" aria-label="System 2">System 2</p>
+                <h3 id="card2-title" class="card__title">
+                  Disaster Preparedness Survey
+                </h3>
+                <p class="card__desc">
+                  Help your community prepare better. Answer a short survey
+                  about your household's emergency readiness and local
+                  awareness.
+                </p>
+                <a
+                  class="card__btn"
+                  href="disaster-preparedness-survey.html"
+                  aria-label="Go to Disaster Preparedness Survey"
+                >
+                  Open Survey
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 7h10M7.5 2.5l4.5 4.5-4.5 4.5"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Accessibility notice -->
+        <aside class="notice" aria-label="Accessibility information">
+          <svg
+            class="notice__icon"
+            aria-hidden="true"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+          >
+            <circle
+              cx="9"
+              cy="9"
+              r="7.5"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path
+              d="M9 8v5M9 5.5v.5"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+          <p>
+            Need help? Reach out to your local barangay office for assistance.
+          </p>
+        </aside>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="footer" role="contentinfo">
+        <p class="footer__course">
+          Web Development &nbsp;&middot;&nbsp; DIT 2-3
+        </p>
+        <p class="footer__sub">
+          Submitted to <strong>Prof. Apsay</strong> &nbsp;&middot;&nbsp; May
+          2026
+        </p>
+        <p class="footer__copy">&copy; 2026 All rights reserved</p>
+      </footer>
+    </div>
+  </body>
+</html>
