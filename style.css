@@ -506,7 +506,7 @@ section {
   gap: 1rem;
   margin: 0.6rem 0 1.2rem;
 }
-.contributor-card {
+.developer-card {
   display: flex;
   gap: 0.9rem;
   align-items: flex-start;
@@ -533,16 +533,16 @@ section {
 img {
   border-radius: var(--radius-sm);
 }
-.contrib-body {
+.developer-body {
   flex: 1;
 }
-.contrib-name {
+.developer-name {
   font-size: 1rem;
   font-weight: 700;
   color: var(--maroon-dk);
   margin-bottom: 0.18rem;
 }
-.contrib-role {
+.developer-role {
   font-size: 0.88rem;
   color: var(--muted);
   margin-bottom: 0.4rem;
