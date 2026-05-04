@@ -15,20 +15,18 @@
 
       <div class="intro-box">
         <p>
-          🛈 Welcome to the <b>Public Market Vendor Registration!</b> Please fill
-          out the form below to register as a vendor at our market. We look
-          forward to having you join our community of local businesses and
-          artisans.<br /><br />
+          Welcome to the <b>Public Market Vendor Registration</b> portal! We are
+          excited to have you join our vibrant community of local businesses and
+          artisans. This system is designed for formal vendor registration and
+          efficient stall management to better serve our marketplace.
         </p>
-
-        <div class="intro-desc">
-          <p>
-            <b>Purpose:</b> System for formal vendor registration and stall
-            management.<br />
-            <b>Privacy Notice:</b> Data collection statement for administrative
-            use.<br />
-          </p>
-        </div>
+        <hr />
+        <p>
+          <b>Privacy Notice:</b> Please be advised that all information provided
+          is collected solely for administrative use and internal
+          record-keeping. By completing this form, you are helping us maintain
+          an organized and thriving environment for all our participants.
+        </p>
       </div>
 
       <form>
@@ -62,7 +60,7 @@
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="123-456-7890"
+                placeholder="1234-567-890"
                 required
               />
             </div>
@@ -80,6 +78,23 @@
           <div class="grid-row">
             <div class="input-group">
               <label for="social-media"
+                >Tax Identification Number (TIN): <i>(Optional)</i></label
+              >
+              <input
+                type="text"
+                id="tin"
+                name="tin"
+                placeholder="123-456-789-000"
+              />
+            </div>
+            <div class="input-group">
+              <label for="birthday">Date of Birth:<b>*</b></label>
+              <input type="date" id="birthday" name="birthday" required />
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="social-media"
                 >Social Media Handles: <i>(Optional)</i></label
               >
               <input
@@ -90,8 +105,10 @@
               />
             </div>
             <div class="input-group">
-              <label for="birthday">Date of Birth:<b>*</b></label>
-              <input type="date" id="birthday" name="birthday" required />
+              <label for="validHealthCertificate"
+                >Valid Health Certificate (Upload)<b>*</b></label
+              >
+              <input type="file" id="validHealthCertificate" required />
             </div>
           </div>
         </section>
@@ -112,6 +129,32 @@
               />
             </div>
             <div class="input-group">
+              <label for="business-type">Business Type: <b>*</b></label>
+              <select id="business-type" name="business-type" required>
+                <option value="" disabled selected>
+                  Select business type...
+                </option>
+                <option value="wet-market">Wet Goods (e.g. Meat, Fish, Poultry)</option>
+                <option value="produce">Fresh Produce (e.g. Fruits, Vegetables)</option>
+                <option value="dry-goods">Dry Goods (e.g. Grains, Clothing, Household items)</option>
+                <option value="sari-sari">Sari-sari (e.g. Grocery, Canned Goods, etc.)</option>
+                <option value="karinderya">Karinderya (e.g. Cooked Food)</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="business-start-date"
+                >Business Start Date: <i>(Optional)</i></label
+              >
+              <input
+                type="date"
+                id="business-start-date"
+                name="business-start-date"
+              />
+            </div>
+            <div class="input-group">
               <label for="stall-number">Stall Number:<b>*</b></label>
               <input
                 type="text"
@@ -124,35 +167,26 @@
           </div>
 
           <div class="input-group">
-            <label>Please select Market Type:<b>*</b></label>
-            <div class="check-item">
-              <label
-                ><input type="checkbox" name="mkt-type" value="wet" /> Wet Goods
-                (e.g. Meat, Fish, Poultry)</label
-              >
-              <label
-                ><input type="checkbox" name="mkt-type" value="dry" /> Dry Goods
-                (e.g. Grains, Clothing, Household items)</label
-              >
-              <label
-                ><input type="checkbox" name="mkt-type" value="produce" /> Fresh
-                Produce (e.g. Fruits, Vegetables)</label
-              >
-              <label
-                ><input type="checkbox" name="mkt-type" value="sari" />
-                Sari-sari (e.g. Grocery, Canned Goods, etc.)</label
-              >
-              <label
-                ><input type="checkbox" name="mkt-type" value="food" />
-                Karinderya (e.g. Cooked Food)</label
-              >
+            <label
+              >Please select Product Type: <i>(Select all that apply)</i><b>*</b></label>
+            <div class="check-grid">
+              <label><input type="checkbox" name="mkt-type" value="wet"/> Meat</label>
+              <label><input type="checkbox" name="mkt-type" value="fish"/> Fish</label>
+              <label><input type="checkbox" name="mkt-type" value="poultry"/> Poultry</label>
+              <label><input type="checkbox" name="mkt-type" value="fruits"/> Fruits</label>
+              <label><input type="checkbox" name="mkt-type" value="vegetables"/> Vegetables</label>
+              <label><input type="checkbox" name="mkt-type" value="grains"/> Grains</label>
+              <label><input type="checkbox" name="mkt-type" value="clothing"/> Clothing</label>
+              <label><input type="checkbox" name="mkt-type" value="household"/> Household Items</label>
+              <label><input type="checkbox" name="mkt-type" value="grocery"/> Grocery</label>
+              <label><input type="checkbox" name="mkt-type" value="cooked"/> Cooked Food</label>
+              <label><input type="checkbox" name="mkt-type" value="other"/> Other</label>
             </div>
           </div>
 
           <div class="input-group">
             <label for="product-source"
-              >Product Source: <i>(Optional)</i></label
-            >
+              >Product Source: <i>(Optional)</i></label>
             <input
               type="text"
               id="product-source"
@@ -160,11 +194,35 @@
               placeholder="e.g. Local Farm, Distributor"
             />
           </div>
+          <div class="input-group">
+            <label for="electricity usage"
+              >Electricity Usage / Appliances Used: <b>*</b></label
+            >
+            <input
+              type="text"
+              id="electricity-usage"
+              name="electricity-usage"
+              placeholder="e.g. Refrigerator, Lighting, etc."
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="sanitation-practice"
+              >Pest Control / Sanitation Practice: <i>(Optional)</i></label
+            >
+            <input
+              type="text"
+              id="sanitation-practice"
+              name="sanitation-practice"
+              placeholder="e.g. Regular fumigation, daily cleaning, etc."
+              required
+            />
+          </div>
         </section>
 
-        <!-- Compliance and Safety -->
+        <!-- Compliance Safety and Documentation -->
         <section class="form-section">
-          <h2 class="section-title">Compliance and Safety</h2>
+          <h2 class="section-title">Compliance Safety and Documentation</h2>
           <div class="input-group">
             <label>Government Registration Checklist<b>*</b></label>
             <div class="check-item">
@@ -292,7 +350,7 @@
 
           <div class="input-group">
             <label for="signature"
-              >Digital Signature (Type Full Name)<b>*</b></label
+              >Digital Signature (Type Full Legal Name)<b>*</b></label
             >
             <input
               type="text"
@@ -306,9 +364,7 @@
 
         <div class="actions">
           <button type="submit" class="submit-btn">Submit Registration</button>
-          <button type="button" class="export-btn">
-            Export to Excel (Simulated)
-          </button>
+          <button type="button" class="export-btn">Export to Excel</button>
         </div>
       </form>
     </div>
