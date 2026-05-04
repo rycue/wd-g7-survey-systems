@@ -1,89 +1,185 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <title>Survey Form</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
-    <body>
- 
+  <body>
     <header class="page-header">
       <h1>Disaster Preparedness Survey</h1>
       <div class="gold-divider"></div>
     </header>
-    
+
     <div class="page-body">
-    
       <!-- Introduction -->
       <div class="info-card">
         <h2>Introduction</h2>
-        <p>The Disaster Preparedness Survey System is designed to collect important information from individuals and households regarding their level of readiness for natural and human-made disasters. The data gathered will help communities, researchers, and organizations better understand current preparedness levels and identify areas for improvement.</p>
-        <p>The primary purpose of this survey is to support academic research by assessing awareness, resources, and preparedness actions related to disasters such as typhoons, floods, earthquakes, and other emergencies. The results will be used to develop recommendations and contribute to disaster risk reduction and management studies.</p>
+        <p>
+          The Disaster Preparedness Survey System is designed to collect
+          important information from individuals and households regarding their
+          level of readiness for natural and human-made disasters. The data
+          gathered will help communities, researchers, and organizations better
+          understand current preparedness levels and identify areas for
+          improvement.
+        </p>
+        <p>
+          The primary purpose of this survey is to support academic research by
+          assessing awareness, resources, and preparedness actions related to
+          disasters such as typhoons, floods, earthquakes, and other
+          emergencies. The results will be used to develop recommendations and
+          contribute to disaster risk reduction and management studies.
+        </p>
       </div>
-    
+
       <!-- Privacy Notice -->
       <div class="info-card privacy-card">
         <h2>Privacy Notice</h2>
-        <p>Your privacy is important to us. All information collected in this survey will be used strictly for school research purposes only. The data gathered will be handled responsibly and will not be used in any way that violates applicable laws and regulations. Personal information will be kept confidential and will only be accessed by the researchers involved in this study. Any results or reports will present data in a summarized form and will not include personally identifiable information. Participation in this survey is voluntary, and you may choose not to answer any question or withdraw at any time.</p>
+        <p>
+          Your privacy is important to us. All information collected in this
+          survey will be used strictly for school research purposes only. The
+          data gathered will be handled responsibly and will not be used in any
+          way that violates applicable laws and regulations. Personal
+          information will be kept confidential and will only be accessed by the
+          researchers involved in this study. Any results or reports will
+          present data in a summarized form and will not include personally
+          identifiable information. Participation in this survey is voluntary,
+          and you may choose not to answer any question or withdraw at any time.
+        </p>
       </div>
-    
+
       <h2 class="form-title">Survey Form</h2>
-    
+
       <form id="surveyForm" novalidate>
-    
         <!-- Personal Information -->
         <div class="survey-section">
           <div class="section-title">Personal Information</div>
-    
+
           <div class="field-row">
             <div class="field-group">
-              <label for="fname">Full Name <span style="color:#c0392b">*</span></label>
-              <input type="text" id="fname" name="fname" placeholder="e.g. Juan dela Cruz" />
-              <span class="error-msg" id="err-fname">Full name is required.</span>
+              <label for="fname"
+                >Full Name <span style="color: #c0392b">*</span></label
+              >
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                placeholder="e.g. Juan dela Cruz"
+              />
+              <span class="error-msg" id="err-fname"
+                >Full name is required.</span
+              >
             </div>
             <div class="field-group">
-              <label for="contact">Contact Number <span style="color:#c0392b">*</span></label>
-              <input type="text" id="contact" name="contact" placeholder="e.g. 09XX-XXX-XXXX" />
-              <span class="error-msg" id="err-contact">Contact number is required.</span>
+              <label for="contact"
+                >Contact Number <span style="color: #c0392b">*</span></label
+              >
+              <input
+                type="text"
+                id="contact"
+                name="contact"
+                placeholder="e.g. 09XX-XXX-XXXX"
+              />
+              <span class="error-msg" id="err-contact"
+                >Contact number is required.</span
+              >
             </div>
           </div>
-    
+
           <div class="field-group">
-            <label for="address">Address <span style="color:#c0392b">*</span></label>
-            <input type="text" id="address" name="address" placeholder="Barangay, City/Municipality, Province" />
+            <label for="address"
+              >Address <span style="color: #c0392b">*</span></label
+            >
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Barangay, City/Municipality, Province"
+            />
             <span class="error-msg" id="err-address">Address is required.</span>
           </div>
-    
+
           <div class="field-row">
             <div class="field-group">
-              <label for="email">Email <span class="optional-badge">optional</span></label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" />
-              <span class="error-msg" id="err-email">Please enter a valid email address.</span>
+              <label for="email"
+                >Email <span class="optional-badge">optional</span></label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+              />
+              <span class="error-msg" id="err-email"
+                >Please enter a valid email address.</span
+              >
             </div>
             <div class="field-group">
-              <label for="household">Household Size <span style="color:#c0392b">*</span></label>
-              <input type="number" id="household" name="household" placeholder="Number of members" min="1" />
-              <span class="error-msg" id="err-household">Please enter household size (at least 1).</span>
+              <label for="household"
+                >Household Size <span style="color: #c0392b">*</span></label
+              >
+              <input
+                type="number"
+                id="household"
+                name="household"
+                placeholder="Number of members"
+                min="1"
+              />
+              <span class="error-msg" id="err-household"
+                >Please enter household size (at least 1).</span
+              >
             </div>
           </div>
         </div>
-    
+
         <!-- Household Profile -->
         <div class="survey-section">
           <div class="section-title">Household Profile</div>
-    
-          <span class="sub-label">Which of the following are present in your household? (Check all that apply) <span style="color:#c0392b">*</span></span>
-          <div class="check-group" id="comp-group" style="margin-bottom: 1.25rem;">
-            <label class="check-item"><input type="checkbox" name="comp" value="children" /> Children (0–17 years)</label>
-            <label class="check-item"><input type="checkbox" name="comp" value="adults" /> Adults (18–59 years)</label>
-            <label class="check-item"><input type="checkbox" name="comp" value="elderly" /> Elderly (60+ years)</label>
-            <label class="check-item"><input type="checkbox" name="comp" value="pwd" /> Persons with Disabilities (PWD)</label>
-            <label class="check-item"><input type="checkbox" name="comp" value="pets" /> Pets</label>
+
+          <span class="sub-label"
+            >Which of the following are present in your household? (Check all
+            that apply) <span style="color: #c0392b">*</span></span
+          >
+          <div
+            class="check-group"
+            id="comp-group"
+            style="margin-bottom: 1.25rem"
+          >
+            <label class="check-item"
+              ><input type="checkbox" name="comp" value="children" /> Children
+              (0–17 years)</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="comp" value="adults" /> Adults
+              (18–59 years)</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="comp" value="elderly" /> Elderly
+              (60+ years)</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="comp" value="pwd" /> Persons with
+              Disabilities (PWD)</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="comp" value="pets" /> Pets</label
+            >
           </div>
-          <span class="error-msg" id="err-comp" style="display:none; margin-bottom:0.8rem;">Please select at least one household member type.</span>
-    
+          <span
+            class="error-msg"
+            id="err-comp"
+            style="display: none; margin-bottom: 0.8rem"
+            >Please select at least one household member type.</span
+          >
+
           <div class="field-group">
-            <label for="housetype">Type of Housing <span class="optional-badge">optional</span></label>
+            <label for="housetype"
+              >Type of Housing
+              <span class="optional-badge">optional</span></label
+            >
             <select id="housetype" name="housetype">
               <option value="">— Select an option —</option>
               <option value="single">Single-story</option>
@@ -93,38 +189,84 @@
             </select>
           </div>
         </div>
-    
+
         <!-- Information Sources -->
         <div class="survey-section">
           <div class="section-title">Information Sources</div>
-          <span class="sub-label">How do you receive disaster-related alerts and information? <span style="color:#c0392b">*</span></span>
+          <span class="sub-label"
+            >How do you receive disaster-related alerts and information?
+            <span style="color: #c0392b">*</span></span
+          >
           <div class="check-group" id="source-group">
-            <label class="check-item"><input type="checkbox" name="source" value="tv" /> Television (TV)</label>
-            <label class="check-item"><input type="checkbox" name="source" value="radio" /> Radio</label>
-            <label class="check-item"><input type="checkbox" name="source" value="socialmedia" /> Social Media</label>
-            <label class="check-item"><input type="checkbox" name="source" value="sms" /> Short Message Service (SMS)</label>
+            <label class="check-item"
+              ><input type="checkbox" name="source" value="tv" /> Television
+              (TV)</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="source" value="radio" />
+              Radio</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="source" value="socialmedia" />
+              Social Media</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="source" value="sms" /> Short Message
+              Service (SMS)</label
+            >
           </div>
-          <span class="error-msg" id="err-source" style="display:none; margin-top:0.5rem;">Please select at least one information source.</span>
+          <span
+            class="error-msg"
+            id="err-source"
+            style="display: none; margin-top: 0.5rem"
+            >Please select at least one information source.</span
+          >
         </div>
-    
+
         <!-- Emergency Kit -->
         <div class="survey-section">
           <div class="section-title">Emergency Kit Checklist</div>
-          <span class="sub-label">Which items does your household currently have? <span style="color:#c0392b">*</span></span>
+          <span class="sub-label"
+            >Which items does your household currently have?
+            <span style="color: #c0392b">*</span></span
+          >
           <div class="check-group" id="kit-group">
-            <label class="check-item"><input type="checkbox" name="kit" value="firstaid" /> First Aid Kit</label>
-            <label class="check-item"><input type="checkbox" name="kit" value="flashlight" /> Flashlight</label>
-            <label class="check-item"><input type="checkbox" name="kit" value="food" /> Food Supply</label>
-            <label class="check-item"><input type="checkbox" name="kit" value="water" /> Water Supply</label>
-            <label class="check-item"><input type="checkbox" name="kit" value="powerbank" /> Power Bank</label>
+            <label class="check-item"
+              ><input type="checkbox" name="kit" value="firstaid" /> First Aid
+              Kit</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="kit" value="flashlight" />
+              Flashlight</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="kit" value="food" /> Food
+              Supply</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="kit" value="water" /> Water
+              Supply</label
+            >
+            <label class="check-item"
+              ><input type="checkbox" name="kit" value="powerbank" /> Power
+              Bank</label
+            >
           </div>
-          <span class="error-msg" id="err-kit" style="display:none; margin-top:0.5rem;">Please check at least one emergency kit item.</span>
+          <span
+            class="error-msg"
+            id="err-kit"
+            style="display: none; margin-top: 0.5rem"
+            >Please check at least one emergency kit item.</span
+          >
         </div>
-    
+
         <!-- Household Readiness -->
         <div class="survey-section">
           <div class="section-title">Household Readiness</div>
-          <span class="sub-label">Indicate whether your household has the following: <span style="color:#c0392b">*</span></span>
+          <span class="sub-label"
+            >Indicate whether your household has the following:
+            <span style="color: #c0392b">*</span></span
+          >
           <div class="readiness-wrap">
             <table class="readiness-table">
               <thead>
@@ -168,44 +310,66 @@
               </tbody>
             </table>
           </div>
-          <span class="error-msg" id="err-readiness" style="display:none; margin-top:0.5rem;">Please answer all readiness items.</span>
+          <span
+            class="error-msg"
+            id="err-readiness"
+            style="display: none; margin-top: 0.5rem"
+            >Please answer all readiness items.</span
+          >
         </div>
-    
+
         <!-- Past Disaster Experience -->
         <div class="survey-section">
           <div class="section-title">Past Disaster Experience</div>
           <div class="field-group">
-            <label for="pastexp">Briefly describe your past disaster experience(s): <span style="color:#c0392b">*</span></label>
-            <textarea id="pastexp" name="pastexp" placeholder="Describe any disaster you or your household have experienced, how you coped, and any lessons learned..."></textarea>
-            <span class="error-msg" id="err-pastexp">Please share your past disaster experience.</span>
+            <label for="pastexp"
+              >Briefly describe your past disaster experience(s):
+              <span style="color: #c0392b">*</span></label
+            >
+            <textarea
+              id="pastexp"
+              name="pastexp"
+              placeholder="Describe any disaster you or your household have experienced, how you coped, and any lessons learned..."
+            ></textarea>
+            <span class="error-msg" id="err-pastexp"
+              >Please share your past disaster experience.</span
+            >
           </div>
         </div>
-    
+
         <!-- Agreements -->
         <div class="survey-section">
           <div class="section-title">Agreements</div>
-          <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display: flex; flex-direction: column; gap: 12px">
             <label class="check-item">
               <input type="checkbox" id="terms" name="terms" />
-              I confirm that the information I have provided is true and accurate to the best of my knowledge. <span style="color:#c0392b">*</span>
+              I confirm that the information I have provided is true and
+              accurate to the best of my knowledge.
+              <span style="color: #c0392b">*</span>
             </label>
-            <span class="error-msg" id="err-terms">You must confirm the accuracy of your responses.</span>
+            <span class="error-msg" id="err-terms"
+              >You must confirm the accuracy of your responses.</span
+            >
             <label class="check-item">
               <input type="checkbox" id="wasteagree" name="wasteagree" />
-              I agree to the privacy notice and consent to the use of my data for research purposes. <span style="color:#c0392b">*</span>
+              I agree to the privacy notice and consent to the use of my data
+              for research purposes. <span style="color: #c0392b">*</span>
             </label>
-            <span class="error-msg" id="err-waste">You must agree to the privacy notice.</span>
+            <span class="error-msg" id="err-waste"
+              >You must agree to the privacy notice.</span
+            >
           </div>
         </div>
-    
+
         <div class="btn-row">
           <button type="submit" class="btn-primary">Submit Survey</button>
-          <button type="button" class="btn-secondary" onclick="window.print()">Print / Download</button>
+          <button type="button" class="btn-secondary" onclick="window.print()">
+            Print / Download
+          </button>
         </div>
-    
       </form>
     </div>
-    
+
     <div class="toast" id="toast"></div>
     <script src="script.js"></script>
   </body>
