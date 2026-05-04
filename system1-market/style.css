@@ -1,5 +1,6 @@
 :root {
   --market-brown: #5d4037;
+  --market-light-brown: #a1887f;
   --market-tan: #fdfaf6;
   --market-light: #faf3e8;
   --market-border: #d7ccc8;
@@ -18,9 +19,9 @@ body {
   background-color: #e8ddd0;
   background-image: repeating-linear-gradient(
     90deg,
-    transparent 3px,
-    rgba(192, 137, 82, 0.591) 10px,
-    rgba(152, 107, 65, 0.667) 6px
+    transparent 1px,
+    rgba(192, 137, 82, 0.591) 16px,
+    rgba(152, 107, 65, 0.667) 12px
   );
   /* background-image: url(https://scontent.fmnl33-4.fna.fbcdn.net/v/t1.15752-9/686915793_1655211725564383_6895736074034490857_n.png?_nc_cat=106&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEkBPW7xezVC7vlKWyvA0RlLk6ctTr_6DcuTpy1Ov_oNyqpTz7ebgLTMdB8FXWhy-cfrCjda2gyGXJU6QZI1UoU&_nc_ohc=SL53-scBWBcQ7kNvwEvAPaH&_nc_oc=AdoLuKlVABaRbRLXWbSGHcuoVjn9rFcKpw6M4cHydgLMC-wD_FNdDn6wfBK5Z2OErLw&_nc_zt=23&_nc_ht=scontent.fmnl33-4.fna&_nc_ss=7b2a8&oh=03_Q7cD5QEy3CKomJ6CI7NcRyDI2VAjGSPiSb-hHHQFgAz57orRdA&oe=6A1EF494);
   background-size: contain;
@@ -42,6 +43,16 @@ Form and Layout
   padding: 35px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-section b {
+  color: var(--warning);
+}
+
+.form-section i {
+  color: var(--market-light-brown);
+  font-weight: 600;
+  font-size: small;
 }
 
 .form-header {
@@ -139,6 +150,14 @@ select {
   transition: border-color 0.2s;
 }
 
+input[type="file"] {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--market-border);
+  background: white;
+  padding: 10px 15px;
+}
+
 input:focus,
 select:focus {
   outline: none;
@@ -147,8 +166,6 @@ select:focus {
 }
 
 .radio-row {
-  display: flex;
-  flex-wrap: wrap;
   gap: 15px;
   background: white;
   padding: 12px;
@@ -158,23 +175,14 @@ select:focus {
 
 .check-item {
   display: block;
+  background: white;
+  border: 1px solid var(--market-border);
+  border-radius: 5px;
   position: relative;
-  padding: 8px 10px;
+  padding: 10px 15px;
   margin-bottom: 5px;
   cursor: pointer;
-}
-
-.check-item label {
-  vertical-align: middle;
   font-weight: normal;
-  margin-bottom: 0;
-  cursor: pointer;
-}
-
-.checkbox:hover,
-.radio-row:hover {
-  background-color: var(--market-light);
-  border-color: var(--market-brown);
 }
 
 .check-item input,
@@ -186,12 +194,13 @@ select:focus {
   margin-top: 12px;
   padding: 10px 14px;
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--market-border);
   background: white;
   font-size: 0.88rem;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  padding: 10px 15px;
+  margin-left: 10px;
 }
 
 /*--------------
@@ -297,7 +306,7 @@ Table and Result
 
 /* Warning highlights for non-compliant vendors */
 .warning-row {
-  background-color: #ffcdd2 !important; /* Soft red highlight */
+  background-color: #ffcdd2 !important;
 }
 
 .status-success {

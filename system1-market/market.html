@@ -36,7 +36,7 @@
         <section class="form-section">
           <h2 class="section-title">Personal Information</h2>
           <div class="input-group">
-            <label for="full-name">Full Name:</label>
+            <label for="full-name">Full Name:<b>*</b></label>
             <input
               type="text"
               id="full-name"
@@ -46,7 +46,7 @@
             />
           </div>
           <div class="input-group">
-            <label for="address">Residential Address:</label>
+            <label for="address">Residential Address:<b>*</b></label>
             <input
               type="text"
               id="address"
@@ -57,7 +57,7 @@
           </div>
           <div class="grid-row">
             <div class="input-group">
-              <label for="phone">Contact Number:</label>
+              <label for="phone">Contact Number:<b>*</b></label>
               <input
                 type="tel"
                 id="phone"
@@ -67,7 +67,7 @@
               />
             </div>
             <div class="input-group">
-              <label for="email">Email Address:</label>
+              <label for="email">Email Address:<b>*</b></label>
               <input
                 type="email"
                 id="email"
@@ -79,7 +79,9 @@
           </div>
           <div class="grid-row">
             <div class="input-group">
-              <label for="social-media">Social Media Handles:</label>
+              <label for="social-media"
+                >Social Media Handles: <i>(Optional)</i></label
+              >
               <input
                 type="text"
                 id="social-media"
@@ -88,7 +90,7 @@
               />
             </div>
             <div class="input-group">
-              <label for="birthday">Date of Birth:</label>
+              <label for="birthday">Date of Birth:<b>*</b></label>
               <input type="date" id="birthday" name="birthday" required />
             </div>
           </div>
@@ -99,7 +101,9 @@
           <h2 class="section-title">Business and Stall Details</h2>
           <div class="grid-row">
             <div class="input-group">
-              <label for="business-name">Business Name: (If applicable)</label>
+              <label for="business-name"
+                >Business Name: <i>(If applicable)</i></label
+              >
               <input
                 type="text"
                 id="business-name"
@@ -108,7 +112,7 @@
               />
             </div>
             <div class="input-group">
-              <label for="stall-number">Stall Number:</label>
+              <label for="stall-number">Stall Number:<b>*</b></label>
               <input
                 type="text"
                 id="stall-number"
@@ -120,7 +124,7 @@
           </div>
 
           <div class="input-group">
-            <label>Please select Market Type:</label>
+            <label>Please select Market Type:<b>*</b></label>
             <div class="check-item">
               <label
                 ><input type="checkbox" name="mkt-type" value="wet" /> Wet Goods
@@ -146,7 +150,9 @@
           </div>
 
           <div class="input-group">
-            <label for="product-source">Product Source:</label>
+            <label for="product-source"
+              >Product Source: <i>(Optional)</i></label
+            >
             <input
               type="text"
               id="product-source"
@@ -160,7 +166,7 @@
         <section class="form-section">
           <h2 class="section-title">Compliance and Safety</h2>
           <div class="input-group">
-            <label>Government Registration Checklist</label>
+            <label>Government Registration Checklist<b>*</b></label>
             <div class="check-item">
               <label
                 ><input type="checkbox" name="gov-reg" value="permit" />
@@ -183,31 +189,35 @@
           </div>
 
           <div class="input-group">
-            <label for="permitYear">Business Permit Year</label>
+            <label for="permitYear">Business Permit Year<b>*</b></label>
             <input type="number" id="permitYear" placeholder="YYYY" />
           </div>
-          <div class="input-group">
-            <label for="validId">Valid Government ID (Upload)</label>
-            <input type="file" id="validId" required />
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="validId">Valid Government ID (Upload)<b>*</b></label>
+              <input type="file" id="validId" required />
+            </div>
+            <div class="input-group">
+              <label for="proofResidency"
+                >Proof of Residency (Upload)<b>*</b></label
+              >
+              <input type="file" id="proofResidency" required />
+            </div>
           </div>
-
           <div class="input-group">
-            <label for="proofResidency">Proof of Residency (Upload)</label>
-            <input type="file" id="proofResidency" required />
-          </div>
-
-          <div class="input-group">
-            <label for="sanitaryNum">Sanitary Permit Number</label>
+            <label for="sanitaryNum">Sanitary Permit Number<b>*</b></label>
             <input
               type="text"
               id="sanitaryNum"
-              placeholder="123456789"
+              placeholder="e.g. NP-04-2025-12213"
               required
             />
           </div>
 
           <div class="input-group">
-            <label for="sanitaryFile">Sanitary Permit File (Upload)</label>
+            <label for="sanitaryFile"
+              >Sanitary Permit File (Upload)<b>*</b></label
+            >
             <input type="file" id="sanitaryFile" required />
           </div>
 
@@ -223,21 +233,25 @@
         <section class="form-section">
           <h2 class="section-title">Vendor Organization</h2>
           <div class="input-group">
-            <label>Association Membership</label>
+            <label>Association Membership<b>*</b></label>
             <div class="radio-row">
               <label
-                ><input type="radio" name="member" value="yes" /> Yes</label
+                ><input type="radio" name="member" value="yes" /> Yes, I am a
+                member</label
               >
-              <label><input type="radio" name="member" value="no" /> No</label>
+              <label
+                ><input type="radio" name="member" value="no" /> No, I am not a
+                member</label
+              >
             </div>
           </div>
           <div class="grid-row">
             <div class="input-group">
-              <label for="assoc-name">Association Name</label>
+              <label for="assoc-name">Association Name <i>(Optional)</i></label>
               <input type="text" id="assoc-name" name="assoc-name" />
             </div>
             <div class="input-group">
-              <label for="assoc-pos">Position</label>
+              <label for="assoc-pos">Position <i>(Optional)</i></label>
               <input type="text" id="assoc-pos" name="assoc-pos" />
             </div>
           </div>
@@ -248,13 +262,13 @@
           <h2 class="section-title">Legal Acknowledgement</h2>
 
           <div class="legal-box">
-            <p><b>Terms and Conditions:</b></p>
+            <p><strong>Terms and Conditions:</strong></p>
             <p>
               By submitting this application, the applicant agrees to abide by
               the Market Code of the local municipality, including operational
               hours and stall maintenance.
             </p>
-            <p><b>Affidavit:</b></p>
+            <p><strong>Affidavit:</strong></p>
             <p>
               I hereby certify that the information provided is true and correct
               to the best of my knowledge.
@@ -264,20 +278,22 @@
           <div class="check-item agreement-check">
             <input type="checkbox" id="terms" name="terms" required />
             <label for="terms"
-              >I have read and agree to the Terms and Conditions</label
+              >I have read and agree to the Terms and Conditions <b>*</b></label
             >
           </div>
 
           <div class="check-item agreement-check">
             <input type="checkbox" id="affidavit" name="affidavit" required />
             <label for="affidavit"
-              >I certify that all information provided is true and
-              correct</label
+              >I certify that all information provided is true and correct
+              <b>*</b></label
             >
           </div>
 
           <div class="input-group">
-            <label for="signature">Digital Signature (Type Full Name)</label>
+            <label for="signature"
+              >Digital Signature (Type Full Name)<b>*</b></label
+            >
             <input
               type="text"
               id="signature"
