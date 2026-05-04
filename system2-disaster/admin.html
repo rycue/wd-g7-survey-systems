@@ -10,21 +10,107 @@
       />
       <link rel="stylesheet" href="style.css" />
       <link rel="stylesheet" href="admin.css" />
+      <link rel="stylesheet" href="admin-map.css" />
    </head>
    <body>
+      <header class="page-header">
+         <h1>Disaster Preparedness Survey</h1>
+         <h2 class="">Barangay / Admin Dashboard</h2>
+         <div class="gold-divider"></div>
+      </header>
       <nav class="top-nav" aria-label="Primary navigation">
          <a href="/index.html">Home</a>
          <a href="/system2-disaster/disaster.html#survey">Survey</a>
          <a href="/system2-disaster/admin.html" class="nav-selected">Admin</a>
       </nav>
 
-      <main class="panel">
-         <h1>Admin</h1>
-         <p>This is the admin area placeholder for the survey systems.</p>
-         <p>
-            You can add dashboards, submitted responses, and management tools
-            here.
-         </p>
+      <main class="admin-container">
+         <div class="admin-header">
+            <h1>Resident Compliance Map & Overview</h1>
+         </div>
+
+         <!-- Map Section -->
+         <div class="map-section">
+            <div class="map-container">
+               <div class="zoom-controls">
+                  <button id="zoomInBtn" class="zoom-btn" title="Zoom In">
+                     +
+                  </button>
+                  <button id="zoomOutBtn" class="zoom-btn" title="Zoom Out">
+                     −
+                  </button>
+                  <button
+                     id="resetZoomBtn"
+                     class="zoom-btn zoom-reset"
+                     title="Reset View"
+                  >
+                     ⟲
+                  </button>
+               </div>
+               <div class="map-wrapper">
+                  <svg
+                     id="barangayMap"
+                     class="barangay-map"
+                     viewBox="0 0 1000 800"
+                     xmlns="http://www.w3.org/2000/svg"
+                  ></svg>
+               </div>
+            </div>
+            <div class="map-legend">
+               <h3>Legend</h3>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ffcccc"></span>
+                  <span>High Flood Risk Zone</span>
+               </div>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ffe6cc"></span>
+                  <span>Fire Risk Zone</span>
+               </div>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ffffcc"></span>
+                  <span>Medium Risk Zone</span>
+               </div>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ccffcc"></span>
+                  <span>Safe Zone</span>
+               </div>
+               <hr
+                  style="
+                     margin: 1rem 0;
+                     border: none;
+                     border-top: 1px solid #ddd;
+                  "
+               />
+               <h4 style="margin-top: 0.75rem; font-size: 0.9rem">
+                  Resident Compliance Status
+               </h4>
+               <div class="legend-item">
+                  <span
+                     class="legend-marker"
+                     style="background: #c0392b"
+                  ></span>
+                  <span>Low Preparedness</span>
+               </div>
+               <div class="legend-item">
+                  <span
+                     class="legend-marker"
+                     style="background: #f39c12"
+                  ></span>
+                  <span>Medium Preparedness</span>
+               </div>
+               <div class="legend-item">
+                  <span
+                     class="legend-marker"
+                     style="background: #27ae60"
+                  ></span>
+                  <span>High Preparedness</span>
+               </div>
+            </div>
+         </div>
+
+         <!-- Tooltip -->
+         <div id="mapTooltip" class="map-tooltip" style="display: none"></div>
       </main>
+      <script src="admin-map.js"></script>
    </body>
 </html>
