@@ -25,9 +25,61 @@
       </nav>
 
       <main class="admin-container">
-         <div class="admin-header">
-            <h1>Resident Compliance Map & Overview</h1>
-         </div>
+         <section class="stats-panel" aria-labelledby="statsTitle">
+            <div class="stats-panel-header">
+               <div>
+                  <h2 id="statsTitle">Preparedness Statistics</h2>
+                  <p>
+                     Live snapshot of tracked households across the barangay.
+                  </p>
+               </div>
+               <button id="printReportBtn" type="button" class="btn-secondary">
+                  Print Report
+               </button>
+            </div>
+            <div id="statsGrid" class="stats-grid"></div>
+            <div class="zone-summary">
+               <div class="zone-summary-header">
+                  <h3>Resident Distribution by Zone</h3>
+                  <p>Households mapped across the barangay hazard areas.</p>
+               </div>
+               <div id="zoneGrid" class="zone-grid"></div>
+            </div>
+         </section>
+
+         <section
+            id="printableReport"
+            class="print-report"
+            aria-labelledby="printReportTitle"
+         >
+            <div class="print-report-header">
+               <p class="report-eyebrow">Barangay Disaster Preparedness</p>
+               <h2 id="printReportTitle">Resident Compliance Summary</h2>
+               <p id="reportGeneratedAt" class="report-meta"></p>
+            </div>
+            <div id="reportSummaryGrid" class="report-summary-grid"></div>
+            <div class="report-priority">
+               <h3>Priority Households</h3>
+               <div id="priorityList" class="priority-list"></div>
+            </div>
+            <div class="report-table-wrap">
+               <table class="report-table">
+                  <thead>
+                     <tr>
+                        <th>Resident</th>
+                        <th>Address</th>
+                        <th>Zone</th>
+                        <th>Score</th>
+                        <th>Kit</th>
+                        <th>Evac Plan</th>
+                        <th>Contacts</th>
+                        <th>Status</th>
+                     </tr>
+                  </thead>
+                  <tbody id="reportTableBody"></tbody>
+               </table>
+            </div>
+         </section>
 
          <!-- Map Section -->
          <div class="map-section">

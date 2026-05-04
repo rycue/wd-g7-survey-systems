@@ -353,6 +353,258 @@ function getComplianceLevel(score) {
   return "low";
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function formatYesNo(value) {
+  return value ? "Yes" : "No";
+}
+
+function getDashboardMetrics() {
+  const totalResidents = residents.length;
+  const totalCompliance = residents.reduce(
+    (sum, resident) => sum + resident.complianceScore,
+    0
+  );
+
+  const preparednessCounts = { high: 0, medium: 0, low: 0 };
+  const checklistCounts = { kit: 0, evac: 0, contacts: 0 };
+  const zoneCounts = { safe: 0, medium: 0, fire: 0, flood: 0 };
+
+  residents.forEach((resident) => {
+    const preparednessLevel = getComplianceLevel(resident.complianceScore);
+    preparednessCounts[preparednessLevel] += 1;
+
+    if (resident.hasKit) checklistCounts.kit += 1;
+    if (resident.hasEvacPlan) checklistCounts.evac += 1;
+    if (resident.hasContacts) checklistCounts.contacts += 1;
+
+    if (zoneCounts[resident.zone] !== undefined) {
+      zoneCounts[resident.zone] += 1;
+    }
+  });
+
+  const priorityHouseholds = [...residents]
+    .sort((a, b) => a.complianceScore - b.complianceScore)
+    .slice(0, 3);
+
+  return {
+    totalResidents,
+    averageCompliance: totalResidents ? totalCompliance / totalResidents : 0,
+    preparednessCounts,
+    checklistCounts,
+    zoneCounts,
+    priorityHouseholds,
+  };
+}
+
+function createStatCard(title, value, note, tone) {
+  return `
+    <article class="stat-card ${tone}">
+      <p class="stat-label">${escapeHtml(title)}</p>
+      <p class="stat-value">${escapeHtml(value)}</p>
+      <p class="stat-note">${escapeHtml(note)}</p>
+    </article>
+  `;
+}
+
+function createZoneCard(zoneName, count, total) {
+  const percentage = total ? Math.round((count / total) * 100) : 0;
+  return `
+    <article class="zone-card">
+      <p class="zone-card-label">${escapeHtml(zoneName)}</p>
+      <p class="zone-card-value">${count}</p>
+      <p class="zone-card-note">${percentage}% of tracked households</p>
+    </article>
+  `;
+}
+
+function renderDashboardStatistics() {
+  const metrics = getDashboardMetrics();
+  const statsGrid = document.getElementById("statsGrid");
+  const zoneGrid = document.getElementById("zoneGrid");
+
+  if (!statsGrid || !zoneGrid) {
+    return;
+  }
+
+  statsGrid.innerHTML = [
+    createStatCard(
+      "🏠 Total Residents",
+      metrics.totalResidents,
+      "Households currently mapped",
+      "crimson"
+    ),
+    createStatCard(
+      "✔️ Average Compliance",
+      `${metrics.averageCompliance.toFixed(1)}%`,
+      "Average preparedness score",
+      "gold"
+    ),
+    createStatCard(
+      "🟢 High Preparedness",
+      metrics.preparednessCounts.high,
+      "Residents ready for emergencies",
+      "green"
+    ),
+    createStatCard(
+      "🟠 Medium Preparedness",
+      metrics.preparednessCounts.medium,
+      "Residents needing follow-up",
+      "amber"
+    ),
+    createStatCard(
+      "🔴 Low Preparedness",
+      metrics.preparednessCounts.low,
+      "Residents needing urgent outreach",
+      "red"
+    ),
+    createStatCard(
+      "⛑️ With Emergency Kits",
+      `${metrics.checklistCounts.kit}/${metrics.totalResidents}`,
+      "Households reporting kits",
+      "blue"
+    ),
+    createStatCard(
+      "🏥 With Evacuation Plans",
+      `${metrics.checklistCounts.evac}/${metrics.totalResidents}`,
+      "Households with evacuation plans",
+      "blue"
+    ),
+    createStatCard(
+      "📞 With Emergency Contacts",
+      `${metrics.checklistCounts.contacts}/${metrics.totalResidents}`,
+      "Households with contacts listed",
+      "blue"
+    ),
+  ].join("");
+
+  zoneGrid.innerHTML = [
+    createZoneCard(
+      "🛡️ Safe Zone",
+      metrics.zoneCounts.safe,
+      metrics.totalResidents
+    ),
+    createZoneCard(
+      "❗ Medium Risk",
+      metrics.zoneCounts.medium,
+      metrics.totalResidents
+    ),
+    createZoneCard(
+      "🔥 Fire Risk",
+      metrics.zoneCounts.fire,
+      metrics.totalResidents
+    ),
+    createZoneCard(
+      "🌊 Flood Risk",
+      metrics.zoneCounts.flood,
+      metrics.totalResidents
+    ),
+  ].join("");
+}
+
+function renderPrintableReport() {
+  const metrics = getDashboardMetrics();
+  const reportGeneratedAt = document.getElementById("reportGeneratedAt");
+  const reportSummaryGrid = document.getElementById("reportSummaryGrid");
+  const priorityList = document.getElementById("priorityList");
+  const reportTableBody = document.getElementById("reportTableBody");
+
+  if (
+    !reportGeneratedAt ||
+    !reportSummaryGrid ||
+    !priorityList ||
+    !reportTableBody
+  ) {
+    return;
+  }
+
+  reportGeneratedAt.textContent = `Generated ${new Date().toLocaleString()}`;
+
+  reportSummaryGrid.innerHTML = [
+    createStatCard(
+      "Total Residents",
+      metrics.totalResidents,
+      "All tracked households",
+      "crimson"
+    ),
+    createStatCard(
+      "Average Compliance",
+      `${metrics.averageCompliance.toFixed(1)}%`,
+      "Overall preparedness level",
+      "gold"
+    ),
+    createStatCard(
+      "Low Preparedness",
+      metrics.preparednessCounts.low,
+      "Priority follow-up needed",
+      "red"
+    ),
+    createStatCard(
+      "Checklist Completion",
+      `${metrics.checklistCounts.kit + metrics.checklistCounts.evac + metrics.checklistCounts.contacts}/${metrics.totalResidents * 3}`,
+      "Combined emergency readiness items",
+      "blue"
+    ),
+  ].join("");
+
+  priorityList.innerHTML = metrics.priorityHouseholds
+    .map((resident) => {
+      const preparednessLevel = getComplianceLevel(resident.complianceScore);
+      const preparednessText =
+        preparednessLevel === "high"
+          ? "High"
+          : preparednessLevel === "medium"
+            ? "Medium"
+            : "Low";
+
+      return `
+        <article class="priority-item ${preparednessLevel}">
+          <div>
+            <h4>${escapeHtml(resident.name)}</h4>
+            <p>${escapeHtml(resident.address)}</p>
+          </div>
+          <div class="priority-meta">
+            <span>${escapeHtml(resident.zone)} zone</span>
+            <strong>${resident.complianceScore}%</strong>
+            <span>${preparednessText} preparedness</span>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  reportTableBody.innerHTML = residents
+    .map((resident) => {
+      const preparednessLevel = getComplianceLevel(resident.complianceScore);
+      const preparednessText =
+        preparednessLevel === "high"
+          ? "High"
+          : preparednessLevel === "medium"
+            ? "Medium"
+            : "Low";
+      return `
+        <tr>
+          <td>${escapeHtml(resident.name)}</td>
+          <td>${escapeHtml(resident.address)}</td>
+          <td>${escapeHtml(resident.zone)}</td>
+          <td>${resident.complianceScore}%</td>
+          <td>${formatYesNo(resident.hasKit)}</td>
+          <td>${formatYesNo(resident.hasEvacPlan)}</td>
+          <td>${formatYesNo(resident.hasContacts)}</td>
+          <td><span class="report-badge ${preparednessLevel}">${preparednessText}</span></td>
+        </tr>
+      `;
+    })
+    .join("");
+}
+
 function showTooltip(event, resident) {
   const tooltip = document.getElementById("mapTooltip");
   const complianceLevel = getComplianceLevel(resident.complianceScore);
@@ -455,8 +707,20 @@ function resetZoom() {
 // Initialize map on page load
 document.addEventListener("DOMContentLoaded", () => {
   drawBarangayMap();
+  renderDashboardStatistics();
+  renderPrintableReport();
+
   document.getElementById("zoomInBtn").addEventListener("click", zoomIn);
   document.getElementById("zoomOutBtn").addEventListener("click", zoomOut);
   document.getElementById("resetZoomBtn").addEventListener("click", resetZoom);
+
+  const printReportBtn = document.getElementById("printReportBtn");
+  if (printReportBtn) {
+    printReportBtn.addEventListener("click", () => {
+      renderPrintableReport();
+      window.print();
+    });
+  }
+
   applyZoom(currentZoom);
 });
