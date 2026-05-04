@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -384,472 +383,517 @@
     </div>
     <script src="system1-market/script.js"></script>
   </body>
-=======
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Public Market Vendor Registration</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js"></script>
-</head>
-<body>
-  <div class="form-container">
-    <header class="form-header">
-      <h1>Public Market Vendor Registration</h1>
-    </header>
+  =======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Public Market Vendor Registration</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="form-container">
+      <header class="form-header">
+        <h1>Public Market Vendor Registration</h1>
+      </header>
 
-    <div class="intro-box">
-      <p>
-        Welcome to the <b>Public Market Vendor Registration</b> portal! We are
-        excited to have you join our vibrant community of local businesses and
-        artisans. This system is designed for formal vendor registration and
-        efficient stall management to better serve our marketplace.
-      </p>
-      <hr/>
-      <p>
-        <b>Privacy Notice:</b> Please be advised that all information provided
-        is collected solely for administrative use and internal
-        record-keeping. By completing this form, you are helping us maintain
-        an organized and thriving environment for all our participants.
-      </p>
+      <div class="intro-box">
+        <p>
+          Welcome to the <b>Public Market Vendor Registration</b> portal! We are
+          excited to have you join our vibrant community of local businesses and
+          artisans. This system is designed for formal vendor registration and
+          efficient stall management to better serve our marketplace.
+        </p>
+        <hr />
+        <p>
+          <b>Privacy Notice:</b> Please be advised that all information provided
+          is collected solely for administrative use and internal
+          record-keeping. By completing this form, you are helping us maintain
+          an organized and thriving environment for all our participants.
+        </p>
+      </div>
+
+      <form>
+        <!-- Personal Information -->
+        <section class="form-section">
+          <h2 class="section-title">Personal Information</h2>
+          <div class="input-group">
+            <label for="full-name">Full Name:<b>*</b></label>
+            <input
+              type="text"
+              id="full-name"
+              name="full-name"
+              placeholder="Alexander Doe"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="address">Residential Address:<b>*</b></label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="123 Main Street"
+              required
+            />
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="phone">Contact Number:<b>*</b></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="1234-567-890"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="email">Email Address:<b>*</b></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="alexander.doe@example.com"
+                required
+              />
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="social-media"
+                >Tax Identification Number (TIN): <i>(Optional)</i></label
+              >
+              <input
+                type="text"
+                id="tin"
+                name="tin"
+                placeholder="123-456-789-000"
+              />
+            </div>
+            <div class="input-group">
+              <label for="birthday">Date of Birth:<b>*</b></label>
+              <input type="date" id="birthday" name="birthday" required />
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="social-media"
+                >Social Media Handles: <i>(Optional)</i></label
+              >
+              <input
+                type="text"
+                id="social-media"
+                name="social-media"
+                placeholder="@alexanderdoe"
+              />
+            </div>
+            <div class="input-group">
+              <label for="validHealthCertificate"
+                >Valid Health Certificate (Upload)<b>*</b></label
+              >
+              <input type="file" id="validHealthCertificate" required />
+            </div>
+          </div>
+        </section>
+
+        <!-- Business and Stall Details -->
+        <section class="form-section">
+          <h2 class="section-title">Business and Stall Details</h2>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="business-name"
+                >Business Name: <i>(If applicable)</i></label
+              >
+              <input
+                type="text"
+                id="business-name"
+                name="business-name"
+                placeholder="Doe's Fresh Produce"
+              />
+            </div>
+            <div class="input-group">
+              <label for="business-type">Business Type: <b>*</b></label>
+              <select id="business-type" name="business-type" required>
+                <option value="" disabled selected>
+                  Select business type...
+                </option>
+                <option value="wet-market">
+                  Wet Goods (e.g. Meat, Fish, Poultry)
+                </option>
+                <option value="produce">
+                  Fresh Produce (e.g. Fruits, Vegetables)
+                </option>
+                <option value="dry-goods">
+                  Dry Goods (e.g. Grains, Clothing, Household items)
+                </option>
+                <option value="sari-sari">
+                  Sari-sari (e.g. Grocery, Canned Goods, etc.)
+                </option>
+                <option value="karinderya">
+                  Karinderya (e.g. Cooked Food)
+                </option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="business-start-date"
+                >Business Start Date: <i>(Optional)</i></label
+              >
+              <input
+                type="date"
+                id="business-start-date"
+                name="business-start-date"
+              />
+            </div>
+            <div class="input-group">
+              <label for="stall-number">Stall Number:<b>*</b></label>
+              <input
+                type="text"
+                id="stall-number"
+                name="stall-number"
+                placeholder="e.g. S-001"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label
+              >Please select Product Type: <i>(Select all that apply)</i
+              ><b>*</b></label
+            >
+            <div class="check-grid">
+              <label
+                ><input type="checkbox" name="mkt-type" value="wet" />
+                Meat</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="fish" />
+                Fish</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="poultry" />
+                Poultry</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="fruits" />
+                Fruits</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="vegetables" />
+                Vegetables</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="grains" />
+                Grains</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="clothing" />
+                Clothing</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="household" />
+                Household Items</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="grocery" />
+                Grocery</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="cooked" /> Cooked
+                Food</label
+              >
+              <label
+                ><input type="checkbox" name="mkt-type" value="other" />
+                Other</label
+              >
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="product-source"
+              >Product Source: <i>(Optional)</i></label
+            >
+            <input
+              type="text"
+              id="product-source"
+              name="product-source"
+              placeholder="e.g. Local Farm, Distributor"
+            />
+          </div>
+          <div class="input-group">
+            <label for="electricity usage"
+              >Electricity Usage / Appliances Used:<b>*</b></label
+            >
+            <input
+              type="text"
+              id="electricity-usage"
+              name="electricity-usage"
+              placeholder="e.g. Refrigerator, Lighting, etc."
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="sanitation-practice"
+              >Pest Control / Sanitation Practice: <i>(Optional)</i></label
+            >
+            <input
+              type="text"
+              id="sanitation-practice"
+              name="sanitation-practice"
+              placeholder="e.g. Regular fumigation, daily cleaning, etc."
+              required
+            />
+          </div>
+        </section>
+
+        <!-- Compliance Safety and Documentation -->
+        <section class="form-section">
+          <h2 class="section-title">Compliance Safety and Documentation</h2>
+          <div class="input-group">
+            <label>Government Registration Checklist<b>*</b></label>
+            <div class="check-item">
+              <label
+                ><input type="checkbox" name="gov-reg" value="permit" />
+                Business Permit</label
+              >
+              <label
+                ><input type="checkbox" name="gov-reg" value="tin" /> TIN</label
+              >
+              <label
+                ><input type="checkbox" name="gov-reg" value="barangay" />
+                Barangay Clearance</label
+              >
+              <label
+                ><input type="checkbox" name="gov-reg" value="dti" /> DTI</label
+              >
+              <label
+                ><input type="checkbox" name="gov-reg" value="bir" /> BIR</label
+              >
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="permitYear">Business Permit Year<b>*</b></label>
+            <input type="number" id="permitYear" placeholder="YYYY" />
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="validId">Valid Government ID (Upload)<b>*</b></label>
+              <input type="file" id="validId" required />
+            </div>
+            <div class="input-group">
+              <label for="proofResidency"
+                >Proof of Residency (Upload)<b>*</b></label
+              >
+              <input type="file" id="proofResidency" required />
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="sanitaryNum">Sanitary Permit Number<b>*</b></label>
+            <input
+              type="text"
+              id="sanitaryNum"
+              placeholder="e.g. NP-04-2025-12213"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="sanitaryFile"
+              >Sanitary Permit File (Upload)<b>*</b></label
+            >
+            <input type="file" id="sanitaryFile" required />
+          </div>
+
+          <div class="check-item agreement-check">
+            <input type="checkbox" id="wasteSeg" name="wasteSeg" required />
+            <label for="wasteSeg"
+              >I agree to the Waste Segregation Agreement<b>*</b></label
+            >
+          </div>
+        </section>
+
+        <!-- Vendor Organization -->
+        <section class="form-section">
+          <h2 class="section-title">Vendor Organization</h2>
+          <div class="input-group">
+            <label>Association Membership<b>*</b></label>
+            <div class="radio-row">
+              <label
+                ><input type="radio" name="member" value="yes" /> Yes, I am a
+                member</label
+              >
+              <label
+                ><input type="radio" name="member" value="no" /> No, I am not a
+                member</label
+              >
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="input-group">
+              <label for="assoc-name">Association Name <i>(Optional)</i></label>
+              <input type="text" id="assoc-name" name="assoc-name" />
+            </div>
+            <div class="input-group">
+              <label for="assoc-pos">Position <i>(Optional)</i></label>
+              <input type="text" id="assoc-pos" name="assoc-pos" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Legal Acknowledgement Section -->
+        <section class="form-section">
+          <h2 class="section-title">Legal Acknowledgement</h2>
+
+          <div class="legal-box">
+            <p><strong>Terms and Conditions:</strong></p>
+            <p>
+              By submitting this application, the applicant agrees to abide by
+              the Market Code of the local municipality, including operational
+              hours and stall maintenance.
+            </p>
+            <p><strong>Affidavit:</strong></p>
+            <p>
+              I hereby certify that the information provided is true and correct
+              to the best of my knowledge.
+            </p>
+          </div>
+
+          <div class="check-item agreement-check">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms"
+              >I have read and agree to the Terms and Conditions <b>*</b></label
+            >
+          </div>
+
+          <div class="check-item agreement-check">
+            <input type="checkbox" id="affidavit" name="affidavit" required />
+            <label for="affidavit"
+              >I certify that all information provided is true and correct
+              <b>*</b></label
+            >
+          </div>
+
+          <div class="input-group">
+            <label for="signature"
+              >Digital Signature (Type Full Legal Name)<b>*</b></label
+            >
+            <input
+              type="text"
+              id="signature"
+              name="signature"
+              placeholder="Signature equivalent"
+              required
+            />
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="submit" class="submit-btn">Submit Registration</button>
+          <button type="button" class="export-btn">Export to Excel</button>
+        </div>
+      </form>
     </div>
 
-    <form>
-      <!-- Personal Information -->
-      <section class="form-section">
-        <h2 class="section-title">Personal Information</h2>
-        <div class="input-group">
-          <label for="full-name">Full Name:<b>*</b></label>
-          <input
-            type="text"
-            id="full-name"
-            name="full-name"
-            placeholder="Alexander Doe"
-            required
-          />
-        </div>
-        <div class="input-group">
-          <label for="address">Residential Address:<b>*</b></label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            placeholder="123 Main Street"
-            required
-          />
-        </div>
-        <div class="grid-row">
-          <div class="input-group">
-            <label for="phone">Contact Number:<b>*</b></label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="1234-567-890"
-              required
-            />
-          </div>
-          <div class="input-group">
-            <label for="email">Email Address:<b>*</b></label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="alexander.doe@example.com"
-              required
-            />
-          </div>
-        </div>
-        <div class="grid-row">
-          <div class="input-group">
-            <label for="social-media"
-              >Tax Identification Number (TIN): <i>(Optional)</i></label
-            >
-            <input
-              type="text"
-              id="tin"
-              name="tin"
-              placeholder="123-456-789-000"
-            />
-          </div>
-          <div class="input-group">
-            <label for="birthday">Date of Birth:<b>*</b></label>
-            <input type="date" id="birthday" name="birthday" required />
-          </div>
-        </div>
-        <div class="grid-row">
-          <div class="input-group">
-            <label for="social-media"
-              >Social Media Handles: <i>(Optional)</i></label
-            >
-            <input
-              type="text"
-              id="social-media"
-              name="social-media"
-              placeholder="@alexanderdoe"
-            />
-          </div>
-          <div class="input-group">
-            <label for="validHealthCertificate"
-              >Valid Health Certificate (Upload)<b>*</b></label
-            >
-            <input type="file" id="validHealthCertificate" required />
-          </div>
-        </div>
-      </section>
+    <div class="form-container">
+      <header class="form-header">
+        <h1>Administrative Section</h1>
+        <p>For administrative review and record-keeping purposes.</p>
+      </header>
 
-      <!-- Business and Stall Details -->
-      <section class="form-section">
-        <h2 class="section-title">Business and Stall Details</h2>
+      <!-- Administrative Section -->
+      <section class="form-section admin-style">
+        <h2 class="section-title">Administrative Office Use</h2>
+        <div class="input-group">
+          <label for="mkt-assign">Market Assignment</label>
+          <input type="text" id="mkt-assign" name="mkt-assign" />
+        </div>
         <div class="grid-row">
           <div class="input-group">
-            <label for="business-name"
-              >Business Name: <i>(If applicable)</i></label
-            >
-            <input
-              type="text"
-              id="business-name"
-              name="business-name"
-              placeholder="Doe's Fresh Produce"
-            />
+            <label for="stall-area">Stall Area (sqm)</label>
+            <input type="number" id="stall-area" name="stall-area" />
           </div>
           <div class="input-group">
-            <label for="business-type">Business Type: <b>*</b></label>
-            <select id="business-type" name="business-type" required>
-              <option value="" disabled selected>
-                Select business type...
-              </option>
-              <option value="wet-market">Wet Goods (e.g. Meat, Fish, Poultry)</option>
-              <option value="produce">Fresh Produce (e.g. Fruits, Vegetables)</option>
-              <option value="dry-goods">Dry Goods (e.g. Grains, Clothing, Household items)</option>
-              <option value="sari-sari">Sari-sari (e.g. Grocery, Canned Goods, etc.)</option>
-              <option value="karinderya">Karinderya (e.g. Cooked Food)</option>
-              <option value="other">Other</option>
+            <label for="rental-rate">Rental Rate</label>
+            <input
+              type="number"
+              id="rental-rate"
+              name="rental-rate"
+              step="0.01"
+            />
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="loc-desc">Location Description</label>
+          <input type="text" id="loc-desc" name="loc-desc" />
+        </div>
+        <div class="grid-row">
+          <div class="input-group">
+            <label for="pay-status">Payment Status</label>
+            <select id="pay-status" name="pay-status">
+              <option value="unpaid">Unpaid</option>
+              <option value="partial">Partial</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="pay-period">Payment Period</label>
+            <select id="pay-period" name="pay-period">
+              <option value="monthly">Monthly</option>
+              <option value="quarterly">Quarterly</option>
             </select>
           </div>
         </div>
-        <div class="grid-row">
-          <div class="input-group">
-            <label for="business-start-date"
-              >Business Start Date: <i>(Optional)</i></label
-            >
-            <input
-              type="date"
-              id="business-start-date"
-              name="business-start-date"
-            />
-          </div>
-          <div class="input-group">
-            <label for="stall-number">Stall Number:<b>*</b></label>
-            <input
-              type="text"
-              id="stall-number"
-              name="stall-number"
-              placeholder="e.g. S-001"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label
-            >Please select Product Type: <i>(Select all that apply)</i><b>*</b></label>
-          <div class="check-grid">
-            <label><input type="checkbox" name="mkt-type" value="wet"/> Meat</label>
-            <label><input type="checkbox" name="mkt-type" value="fish"/> Fish</label>
-            <label><input type="checkbox" name="mkt-type" value="poultry"/> Poultry</label>
-            <label><input type="checkbox" name="mkt-type" value="fruits"/> Fruits</label>
-            <label><input type="checkbox" name="mkt-type" value="vegetables"/> Vegetables</label>
-            <label><input type="checkbox" name="mkt-type" value="grains"/> Grains</label>
-            <label><input type="checkbox" name="mkt-type" value="clothing"/> Clothing</label>
-            <label><input type="checkbox" name="mkt-type" value="household"/> Household Items</label>
-            <label><input type="checkbox" name="mkt-type" value="grocery"/> Grocery</label>
-            <label><input type="checkbox" name="mkt-type" value="cooked"/> Cooked Food</label>
-            <label><input type="checkbox" name="mkt-type" value="other"/> Other</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label for="product-source"
-            >Product Source: <i>(Optional)</i></label>
-          <input
-            type="text"
-            id="product-source"
-            name="product-source"
-            placeholder="e.g. Local Farm, Distributor"
-          />
-        </div>
-        <div class="input-group">
-          <label for="electricity usage"
-            >Electricity Usage / Appliances Used:<b>*</b></label
-          >
-          <input
-            type="text"
-            id="electricity-usage"
-            name="electricity-usage"
-            placeholder="e.g. Refrigerator, Lighting, etc."
-            required
-          />
-        </div>
-        <div class="input-group">
-          <label for="sanitation-practice"
-            >Pest Control / Sanitation Practice: <i>(Optional)</i></label
-          >
-          <input
-            type="text"
-            id="sanitation-practice"
-            name="sanitation-practice"
-            placeholder="e.g. Regular fumigation, daily cleaning, etc."
-            required
-          />
-        </div>
       </section>
 
-      <!-- Compliance Safety and Documentation -->
-      <section class="form-section">
-        <h2 class="section-title">Compliance Safety and Documentation</h2>
-        <div class="input-group">
-          <label>Government Registration Checklist<b>*</b></label>
-          <div class="check-item">
-            <label
-              ><input type="checkbox" name="gov-reg" value="permit" />
-              Business Permit</label
-            >
-            <label
-              ><input type="checkbox" name="gov-reg" value="tin" /> TIN</label
-            >
-            <label
-              ><input type="checkbox" name="gov-reg" value="barangay" />
-              Barangay Clearance</label
-            >
-            <label
-              ><input type="checkbox" name="gov-reg" value="dti" /> DTI</label
-            >
-            <label
-              ><input type="checkbox" name="gov-reg" value="bir" /> BIR</label
-            >
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label for="permitYear">Business Permit Year<b>*</b></label>
-          <input type="number" id="permitYear" placeholder="YYYY" />
-        </div>
-        <div class="grid-row">
-          <div class="input-group">
-            <label for="validId">Valid Government ID (Upload)<b>*</b></label>
-            <input type="file" id="validId" required />
-          </div>
-          <div class="input-group">
-            <label for="proofResidency"
-              >Proof of Residency (Upload)<b>*</b></label
-            >
-            <input type="file" id="proofResidency" required />
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="sanitaryNum">Sanitary Permit Number<b>*</b></label>
-          <input
-            type="text"
-            id="sanitaryNum"
-            placeholder="e.g. NP-04-2025-12213"
-            required
-          />
-        </div>
-
-        <div class="input-group">
-          <label for="sanitaryFile"
-            >Sanitary Permit File (Upload)<b>*</b></label
-          >
-          <input type="file" id="sanitaryFile" required />
-        </div>
-
-        <div class="check-item agreement-check">
-          <input type="checkbox" id="wasteSeg" name="wasteSeg" required />
-          <label for="wasteSeg"
-            >I agree to the Waste Segregation Agreement<b>*</b></label
-          >
+      <!-- Survey Results Section with SIMULATED DATA -->
+      <section class="form-section result-section">
+        <h2 class="section-title">Registered Vendors</h2>
+        <div class="table-responsive">
+          <table class="survey-table">
+            <thead>
+              <tr>
+                <th>Business Name</th>
+                <th>Product Type</th>
+                <th>Permit Number</th>
+                <th>Sanitary Practices</th>
+                <th>Compliance Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Simulated Row 1: Compliant Vendor -->
+              <tr>
+                <td>Fresh Catch Seafood</td>
+                <td>Fish</td>
+                <td>PM-2026-001</td>
+                <td>Good</td>
+                <td><span class="status-success">Compliant</span></td>
+              </tr>
+              <!-- Simulated Row 2: Non-Compliant Vendor (Warning Highlight) -->
+              <tr class="warning-row">
+                <td>Daily Greens</td>
+                <td>Vegetables</td>
+                <td>PENDING</td>
+                <td>Poor</td>
+                <td><span class="status-error">Non-Compliant</span></td>
+              </tr>
+              <!-- Simulated Row 3: Compliant Vendor -->
+              <tr>
+                <td>Butcher's Choice</td>
+                <td>Meat</td>
+                <td>PM-2026-045</td>
+                <td>Fair</td>
+                <td><span class="status-success">Compliant</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
-
-      <!-- Vendor Organization -->
-      <section class="form-section">
-        <h2 class="section-title">Vendor Organization</h2>
-        <div class="input-group">
-          <label>Association Membership<b>*</b></label>
-          <div class="radio-row">
-            <label
-              ><input type="radio" name="member" value="yes" /> Yes, I am a
-              member</label
-            >
-            <label
-              ><input type="radio" name="member" value="no" /> No, I am not a
-              member</label
-            >
-          </div>
-        </div>
-        <div class="grid-row">
-          <div class="input-group">
-            <label for="assoc-name">Association Name <i>(Optional)</i></label>
-            <input type="text" id="assoc-name" name="assoc-name" />
-          </div>
-          <div class="input-group">
-            <label for="assoc-pos">Position <i>(Optional)</i></label>
-            <input type="text" id="assoc-pos" name="assoc-pos" />
-          </div>
-        </div>
-      </section>
-
-      <!-- Legal Acknowledgement Section -->
-      <section class="form-section">
-        <h2 class="section-title">Legal Acknowledgement</h2>
-
-        <div class="legal-box">
-          <p><strong>Terms and Conditions:</strong></p>
-          <p>
-            By submitting this application, the applicant agrees to abide by
-            the Market Code of the local municipality, including operational
-            hours and stall maintenance.
-          </p>
-          <p><strong>Affidavit:</strong></p>
-          <p>
-            I hereby certify that the information provided is true and correct
-            to the best of my knowledge.
-          </p>
-        </div>
-
-        <div class="check-item agreement-check">
-          <input type="checkbox" id="terms" name="terms" required />
-          <label for="terms"
-            >I have read and agree to the Terms and Conditions <b>*</b></label
-          >
-        </div>
-
-        <div class="check-item agreement-check">
-          <input type="checkbox" id="affidavit" name="affidavit" required />
-          <label for="affidavit"
-            >I certify that all information provided is true and correct
-            <b>*</b></label
-          >
-        </div>
-
-        <div class="input-group">
-          <label for="signature"
-            >Digital Signature (Type Full Legal Name)<b>*</b></label
-          >
-          <input
-            type="text"
-            id="signature"
-            name="signature"
-            placeholder="Signature equivalent"
-            required
-          />
-        </div>
-      </section>
-
-      <div class="actions">
-        <button type="submit" class="submit-btn">Submit Registration</button>
-        <button type="button" class="export-btn">Export to Excel</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="form-container">
-    <header class="form-header">
-      <h1>Administrative Section</h1>
-      <p>For administrative review and record-keeping purposes.</p>
-    </header>
-
-    <!-- Administrative Section -->
-    <section class="form-section admin-style">
-      <h2 class="section-title">Administrative Office Use</h2>
-      <div class="input-group">
-        <label for="mkt-assign">Market Assignment</label>
-        <input type="text" id="mkt-assign" name="mkt-assign" />
-      </div>
-      <div class="grid-row">
-        <div class="input-group">
-          <label for="stall-area">Stall Area (sqm)</label>
-          <input type="number" id="stall-area" name="stall-area" />
-        </div>
-        <div class="input-group">
-          <label for="rental-rate">Rental Rate</label>
-          <input
-            type="number"
-            id="rental-rate"
-            name="rental-rate"
-            step="0.01"
-          />
-        </div>
-      </div>
-      <div class="input-group">
-        <label for="loc-desc">Location Description</label>
-        <input type="text" id="loc-desc" name="loc-desc" />
-      </div>
-      <div class="grid-row">
-        <div class="input-group">
-          <label for="pay-status">Payment Status</label>
-          <select id="pay-status" name="pay-status">
-            <option value="unpaid">Unpaid</option>
-            <option value="partial">Partial</option>
-            <option value="paid">Paid</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="pay-period">Payment Period</label>
-          <select id="pay-period" name="pay-period">
-            <option value="monthly">Monthly</option>
-            <option value="quarterly">Quarterly</option>
-          </select>
-        </div>
-      </div>
-    </section>
-
-    <!-- Survey Results Section with SIMULATED DATA -->
-    <section class="form-section result-section">
-      <h2 class="section-title">Registered Vendors</h2>
-      <div class="table-responsive">
-        <table class="survey-table">
-          <thead>
-            <tr>
-              <th>Business Name</th>
-              <th>Product Type</th>
-              <th>Permit Number</th>
-              <th>Sanitary Practices</th>
-              <th>Compliance Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Simulated Row 1: Compliant Vendor -->
-            <tr>
-              <td>Fresh Catch Seafood</td>
-              <td>Fish</td>
-              <td>PM-2026-001</td>
-              <td>Good</td>
-              <td><span class="status-success">Compliant</span></td>
-            </tr>
-            <!-- Simulated Row 2: Non-Compliant Vendor (Warning Highlight) -->
-            <tr class="warning-row">
-              <td>Daily Greens</td>
-              <td>Vegetables</td>
-              <td>PENDING</td>
-              <td>Poor</td>
-              <td><span class="status-error">Non-Compliant</span></td>
-            </tr>
-            <!-- Simulated Row 3: Compliant Vendor -->
-            <tr>
-              <td>Butcher's Choice</td>
-              <td>Meat</td>
-              <td>PM-2026-045</td>
-              <td>Fair</td>
-              <td><span class="status-success">Compliant</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </div>
-</body>
->>>>>>> 97981bbca4b9e647f378d4ae267d2f61588cf761
+    </div>
+    <script src="/system1-market/script.js"></script>
+  </body>
 </html>
-
