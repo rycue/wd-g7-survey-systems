@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,9 +7,25 @@
       <link rel="stylesheet" href="style.css" />
    </head>
    <body>
+      <header class="page-header">
+         <p class="header-kicker">Public Market Records</p>
+         <h1>Public Market Vendor Registration</h1>
+         <h2>Survey Section</h2>
+         <p class="header-copy">
+            Register vendors, track compliance details, and manage market
+            records in one place.
+         </p>
+         <div class="gold-divider"></div>
+      </header>
+
+      <nav class="top-nav" aria-label="Primary navigation">
+         <a href="../index.html">Home</a>
+         <a href="market.html" class="nav-selected">Survey</a>
+         <a href="admin.html">Admin</a>
+      </nav>
+
       <div class="form-container">
-         <header>
-            <h1>Public Market Vendor Registration</h1>
+         <form id="vendorForm">
             <div class="intro-box">
                <p>
                   Welcome to the Public Market Vendor Registration! Please fill
@@ -26,9 +42,7 @@
                   administrative use.
                </p>
             </div>
-         </header>
 
-         <form id="vendorForm">
             <!-- Personal Information -->
             <section class="form-section">
                <h2 class="section-title">Personal Information</h2>
@@ -330,99 +344,10 @@
                <button type="submit" class="submit-btn">
                   Submit Registration
                </button>
-               <button type="button" class="export-btn">
-                  Export to Excel (Simulated)
-               </button>
             </div>
          </form>
       </div>
 
-      <div class="form-container">
-         <header>
-            <h1>Administrative Section</h1>
-            <p>
-               This section will display a summary of the vendor registration
-               details after form submission. It is intended for administrative
-               review and record-keeping purposes.
-            </p>
-         </header>
-
-         <!-- Administrative Section -->
-         <section class="form-section admin-style">
-            <h2 class="section-title">Administrative Office Use</h2>
-            <div class="grid-row">
-               <div class="input-group">
-                  <label for="mkt-assign">Market Assignment</label>
-                  <input type="text" id="mkt-assign" name="mkt-assign" />
-               </div>
-               <div class="input-group">
-                  <label for="stall-area">Stall Area (sqm)</label>
-                  <input type="number" id="stall-area" name="stall-area" />
-               </div>
-            </div>
-            <div class="grid-row">
-               <div class="input-group">
-                  <label for="pay-status">Payment Status</label>
-                  <select id="pay-status" name="pay-status">
-                     <option value="unpaid">Unpaid</option>
-                     <option value="partial">Partial</option>
-                     <option value="paid">Paid</option>
-                  </select>
-               </div>
-               <div class="input-group">
-                  <label for="pay-period">Payment Period</label>
-                  <select id="pay-period" name="pay-period">
-                     <option value="monthly">Monthly</option>
-                     <option value="quarterly">Quarterly</option>
-                  </select>
-               </div>
-            </div>
-         </section>
-
-         <!-- Survey Results Section with SIMULATED DATA -->
-         <section class="form-section result-section">
-            <h2 class="section-title">Registered Vendors</h2>
-            <div class="table-responsive">
-               <table class="survey-table">
-                  <thead>
-                     <tr>
-                        <th>Business Name</th>
-                        <th>Product Type</th>
-                        <th>Permit Number</th>
-                        <th>Sanitary Practices</th>
-                        <th>Compliance Status</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <!-- Simulated Row 1: Compliant Vendor -->
-                     <tr>
-                        <td>Fresh Catch Seafood</td>
-                        <td>Fish</td>
-                        <td>PM-2026-001</td>
-                        <td>Good</td>
-                        <td><span class="status-success">Compliant</span></td>
-                     </tr>
-                     <!-- Simulated Row 2: Non-Compliant Vendor (Warning Highlight) -->
-                     <tr class="warning-row">
-                        <td>Daily Greens</td>
-                        <td>Vegetables</td>
-                        <td>PENDING</td>
-                        <td>Poor</td>
-                        <td><span class="status-error">Non-Compliant</span></td>
-                     </tr>
-                     <!-- Simulated Row 3: Compliant Vendor -->
-                     <tr>
-                        <td>Butcher's Choice</td>
-                        <td>Meat</td>
-                        <td>PM-2026-045</td>
-                        <td>Fair</td>
-                        <td><span class="status-success">Compliant</span></td>
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
-         </section>
-      </div>
       <script src="system1-market/script.js"></script>
    </body>
 </html>
