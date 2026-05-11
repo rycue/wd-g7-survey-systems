@@ -3,12 +3,16 @@
   "useTabs": false,
   "semi": true,
   "singleQuote": false,
+  "singleAttributePerLine": false,
+  "printWidth": 100,
   "trailingComma": "es5",
   "overrides": [
     {
       "files": "*.html",
       "options": {
-        "tabWidth": 3
+        "tabWidth": 3,
+        "singleAttributePerLine": false,
+        "printWidth": 120
       }
     }
   ]
