@@ -199,6 +199,7 @@ GRID
 .input-group {
   width: 100%;
   padding: 8px 0;
+  padding: 8px 0;
 }
 
 /*========================
@@ -283,6 +284,8 @@ input[type="radio"] {
 }
 
 .radio-row {
+  display: flex;
+  flex-wrap: wrap;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -372,6 +375,7 @@ BUTTONS
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 12px;

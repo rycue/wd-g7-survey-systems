@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Admin Panel</title>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@400;600&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="admin.css" />
+      <link rel="stylesheet" href="admin-map.css" />
+   </head>
+   <body>
+      <header class="page-header">
+         <h1>Disaster Preparedness Survey</h1>
+         <h2 class="">Barangay / Admin Dashboard</h2>
+         <div class="gold-divider"></div>
+      </header>
+      <nav class="top-nav" aria-label="Primary navigation">
+         <a href="/index.html">Home</a>
+         <a href="/system2-disaster/disaster.html#survey">Survey</a>
+         <a href="/system2-disaster/admin.html" class="nav-selected">Admin</a>
+      </nav>
+
+      <main class="admin-container">
+         <section class="stats-panel" aria-labelledby="statsTitle">
+            <div class="stats-panel-header">
+               <div>
+                  <h2 id="statsTitle">Preparedness Statistics</h2>
+                  <p>
+                     Live snapshot of tracked households across the barangay.
+                  </p>
+               </div>
+               <button id="printReportBtn" type="button" class="btn-secondary">
+                  Print Report
+               </button>
+            </div>
+            <div id="statsGrid" class="stats-grid"></div>
+            <div class="zone-summary">
+               <div class="zone-summary-header">
+                  <h3>Resident Distribution by Zone</h3>
+                  <p>Households mapped across the barangay hazard areas.</p>
+               </div>
+               <div id="zoneGrid" class="zone-grid"></div>
+            </div>
+         </section>
+
+         <section
+            id="printableReport"
+            class="print-report"
+            aria-labelledby="printReportTitle"
+         >
+            <div class="print-report-header">
+               <p class="report-eyebrow">Barangay Disaster Preparedness</p>
+               <h2 id="printReportTitle">Resident Compliance Summary</h2>
+               <p id="reportGeneratedAt" class="report-meta"></p>
+            </div>
+            <div id="reportSummaryGrid" class="report-summary-grid"></div>
+            <div class="report-priority">
+               <h3>Priority Households</h3>
+               <div id="priorityList" class="priority-list"></div>
+            </div>
+            <div class="report-table-wrap">
+               <table class="report-table">
+                  <thead>
+                     <tr>
+                        <th>Resident</th>
+                        <th>Address</th>
+                        <th>Zone</th>
+                        <th>Score</th>
+                        <th>Kit</th>
+                        <th>Evac Plan</th>
+                        <th>Contacts</th>
+                        <th>Status</th>
+                     </tr>
+                  </thead>
+                  <tbody id="reportTableBody"></tbody>
+               </table>
+            </div>
+         </section>
+
+         <!-- Map Section -->
+         <div class="map-section">
+            <div class="map-container">
+               <div class="zoom-controls">
+                  <button id="zoomInBtn" class="zoom-btn" title="Zoom In">
+                     +
+                  </button>
+                  <button id="zoomOutBtn" class="zoom-btn" title="Zoom Out">
+                     −
+                  </button>
+                  <button
+                     id="resetZoomBtn"
+                     class="zoom-btn zoom-reset"
+                     title="Reset View"
+                  >
+                     ⟲
+                  </button>
+               </div>
+               <div class="map-wrapper">
+                  <svg
+                     id="barangayMap"
+                     class="barangay-map"
+                     viewBox="0 0 1000 800"
+                     xmlns="http://www.w3.org/2000/svg"
+                  ></svg>
+               </div>
+            </div>
+            <div class="map-legend">
+               <h3>Legend</h3>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ffcccc"></span>
+                  <span>High Flood Risk Zone</span>
+               </div>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ffe6cc"></span>
+                  <span>Fire Risk Zone</span>
+               </div>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ffffcc"></span>
+                  <span>Medium Risk Zone</span>
+               </div>
+               <div class="legend-item">
+                  <span class="legend-color" style="background: #ccffcc"></span>
+                  <span>Safe Zone</span>
+               </div>
+               <hr
+                  style="
+                     margin: 1rem 0;
+                     border: none;
+                     border-top: 1px solid #ddd;
+                  "
+               />
+               <h4 style="margin-top: 0.75rem; font-size: 0.9rem">
+                  Resident Compliance Status
+               </h4>
+               <div class="legend-item">
+                  <span
+                     class="legend-marker"
+                     style="background: #c0392b"
+                  ></span>
+                  <span>Low Preparedness</span>
+               </div>
+               <div class="legend-item">
+                  <span
+                     class="legend-marker"
+                     style="background: #f39c12"
+                  ></span>
+                  <span>Medium Preparedness</span>
+               </div>
+               <div class="legend-item">
+                  <span
+                     class="legend-marker"
+                     style="background: #27ae60"
+                  ></span>
+                  <span>High Preparedness</span>
+               </div>
+            </div>
+         </div>
+
+         <!-- Tooltip -->
+         <div id="mapTooltip" class="map-tooltip" style="display: none"></div>
+      </main>
+      <script src="admin-map.js"></script>
+   </body>
+</html>
