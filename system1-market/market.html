@@ -1,348 +1,513 @@
 <!doctype html>
-<html lang="en">
+<html>
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Public Market Vendor Registration</title>
       <link rel="stylesheet" href="style.css" />
-      <script src="script.js"></script>
    </head>
+
    <body>
+      <header class="page-header">
+         <h1>Public Market Vendor Registration</h1>
+         <h2>Survey Section</h2>
+         <p class="header-copy">Register vendors, track compliance details, and manage market records in one place.</p>
+         <div class="gold-divider"></div>
+      </header>
+
+      <nav class="top-nav" aria-label="Primary navigation">
+         <a href="../index.html">Home</a>
+         <a href="market.html" class="nav-selected">Survey</a>
+         <a href="admin.html">Admin</a>
+      </nav>
+
       <div class="form-container">
-         <header class="form-header">
-            <h1>Public Market Vendor Registration</h1>
-         </header>
+         <form id="vendorForm">
+            <div class="intro-box">
+               <p>
+                  <strong>Welcome to the Public Market Vendor Registration!</strong> Please fill out the form below to
+                  register as a vendor at our market. We look forward to having you join our community of local
+                  businesses and artisans. <br /><span class="label-translation">
+                     Maligayang pagdating sa Pagpaparehistro ng Vendor sa Pampublikong Pamilihan! Mangyaring punan ang
+                     form sa ibaba upang magparehistro bilang isang vendor sa aming pamilihan. Inaasahan namin ang iyong
+                     pagsali sa aming komunidad ng mga lokal na negosyo at artisan.
+                  </span>
+               </p>
+               <p>
+                  <b>Purpose:</b> System for formal vendor registration and stall management.
+                  <span class="label-translation">
+                     Sistema para sa pormal na pagpaparehistro ng vendor at pamamahala ng puwesto.
+                  </span>
+               </p>
+            </div>
 
-         <div class="intro-box">
-            <p>
-               Welcome to the <b>Public Market Vendor Registration</b> portal! We are excited to have you join our
-               vibrant community of local businesses and artisans. This system is designed for formal vendor
-               registration and efficient stall management to better serve our marketplace.
-            </p>
-            <hr />
-            <p>
-               <b>Privacy Notice:</b> Please be advised that all information provided is collected solely for
-               administrative use and internal record-keeping. By completing this form, you are helping us maintain an
-               organized and thriving environment for all our participants.
-            </p>
-         </div>
-
-         <form>
             <!-- Personal Information -->
             <section class="form-section">
-               <h2 class="section-title">Personal Information</h2>
-               <div class="input-group">
-                  <label for="full-name">Full Name:<b>*</b></label>
-                  <input type="text" id="full-name" name="full-name" placeholder="Alexander Doe" required />
-               </div>
-               <div class="input-group">
-                  <label for="address">Residential Address:<b>*</b></label>
-                  <input type="text" id="address" name="address" placeholder="123 Main Street" required />
-               </div>
+               <h2 class="section-title">
+                  Personal Information <span class="label-translation">(Personal na Impormasyon)</span>
+               </h2>
+
                <div class="grid-row">
                   <div class="input-group">
-                     <label for="phone">Contact Number:<b>*</b></label>
-                     <input type="tel" id="phone" name="phone" placeholder="1234-567-890" required />
+                     <label for="first-name">First Name <span class="label-translation">UNANG PANGALAN:</span></label>
+                     <input type="text" id="first-name" name="first-name" placeholder="Juan" required />
                   </div>
+
                   <div class="input-group">
-                     <label for="email">Email Address:<b>*</b></label>
-                     <input type="email" id="email" name="email" placeholder="alexander.doe@example.com" required />
+                     <label for="last-name">Last Name <span class="label-translation">APELYIDO:</span></label>
+                     <input type="text" id="last-name" name="last-name" placeholder="Dela Cruz" required />
                   </div>
                </div>
+
+               <div class="input-group">
+                  <label for="address"
+                     >Residential Address <span class="label-translation">ADDRESS NG TIRAHAN:</span></label
+                  >
+                  <input
+                     type="text"
+                     id="address"
+                     name="address"
+                     placeholder="123 Main St. Lumang Barrio, Kalakhang Maynila"
+                     required
+                  />
+               </div>
+
                <div class="grid-row">
                   <div class="input-group">
-                     <label for="social-media">Tax Identification Number (TIN): <i>(Optional)</i></label>
-                     <input type="text" id="tin" name="tin" placeholder="123-456-789-000" />
+                     <label for="phone"
+                        >Contact Number <span class="label-translation">NUMERO NG TELEPONO:</span></label
+                     >
+                     <input type="tel" id="phone" name="phone" placeholder="09123456789" required />
                   </div>
+
                   <div class="input-group">
-                     <label for="birthday">Date of Birth:<b>*</b></label>
+                     <label for="phone-alt"
+                        >Alternate Contact <span class="label-translation">IBA PANG CONTACT:</span></label
+                     >
+                     <input type="tel" id="phone-alt" name="phone-alt" placeholder="09987654321" />
+                  </div>
+               </div>
+
+               <div class="grid-row">
+                  <div class="input-group">
+                     <label for="email">Email Address <b>(Optional)</b>:</label>
+                     <input type="email" id="email" name="email" placeholder="alexander.doe@example.com" />
+                  </div>
+
+                  <div class="input-group">
+                     <label for="social-media"> Social Media Account Link <b>(Optional)</b>:</label>
+                     <input
+                        type="text"
+                        id="social-media"
+                        name="social-media"
+                        placeholder="https://www.facebook.com/j.rizal123/"
+                     />
+                  </div>
+               </div>
+
+               <div class="grid-row">
+                  <div class="input-group">
+                     <label for="birthday"
+                        >Date of Birth <span class="label-translation">PETSA NG KAPANGANAKAN:</span></label
+                     >
                      <input type="date" id="birthday" name="birthday" required />
                   </div>
-               </div>
-               <div class="grid-row">
-                  <div class="input-group">
-                     <label for="social-media">Social Media Handles: <i>(Optional)</i></label>
-                     <input type="text" id="social-media" name="social-media" placeholder="@alexanderdoe" />
-                  </div>
-                  <div class="input-group">
-                     <label for="validHealthCertificate">Valid Health Certificate (Upload)<b>*</b></label>
-                     <input type="file" id="validHealthCertificate" required />
-                  </div>
+
+                  <!-- reason for commenting: optional and redundant -->
+                  <!-- <div class="input-group">
+                     <label for="tin">
+                        Tax Identification Number (TIN)
+                        <b>(Optional)</b><br />
+                        <span class="label-translation">NUMERO NG PAGKILALA SA BUWIS (TIN) (OPSYONAL):</span>
+                     </label>
+                     <input type="text" id="tin" name="tin" placeholder="123-456-789-000" />
+                  </div> -->
                </div>
             </section>
 
             <!-- Business and Stall Details -->
             <section class="form-section">
-               <h2 class="section-title">Business and Stall Details</h2>
+               <h2 class="section-title">
+                  Business and Stall Details <span class="label-translation">(Mga Detalye ng Negosyo at Pwesto)</span>
+               </h2>
+
                <div class="grid-row">
                   <div class="input-group">
-                     <label for="business-name">Business Name: <i>(If applicable)</i></label>
+                     <label for="business-name">
+                        Business Name: (If applicable)
+                        <br />
+                        <span class="label-translation">PANGALAN NG NEGOSYO: (KUNG MERON)</span>
+                     </label>
                      <input type="text" id="business-name" name="business-name" placeholder="Doe's Fresh Produce" />
                   </div>
+
                   <div class="input-group">
-                     <label for="business-type">Business Type: <b>*</b></label>
-                     <select id="business-type" name="business-type" required>
-                        <option value="" disabled selected>Select business type...</option>
-                        <option value="wet-market">Wet Goods (e.g. Meat, Fish, Poultry)</option>
-                        <option value="produce">Fresh Produce (e.g. Fruits, Vegetables)</option>
-                        <option value="dry-goods">Dry Goods (e.g. Grains, Clothing, Household items)</option>
-                        <option value="sari-sari">Sari-sari (e.g. Grocery, Canned Goods, etc.)</option>
-                        <option value="karinderya">Karinderya (e.g. Cooked Food)</option>
-                        <option value="other">Other</option>
-                     </select>
+                     <label for="stall-number"
+                        >Stall Number <br /><span class="label-translation">NUMERO NG PWESTO:</span></label
+                     >
+                     <input
+                        type="number"
+                        min="1"
+                        id="stall-number"
+                        name="stall-number"
+                        placeholder="e.g. S-001"
+                        required
+                     />
                   </div>
                </div>
+
                <div class="grid-row">
                   <div class="input-group">
-                     <label for="business-start-date">Business Start Date: <i>(Optional)</i></label>
+                     <label for="business-start-date">
+                        Business Start Date <b>(Optional)</b><br /><span class="label-translation"
+                           >PETSA NG PAGSISIMULA NG NEGOSYO (OPSYONAL):</span
+                        >
+                     </label>
                      <input type="date" id="business-start-date" name="business-start-date" />
                   </div>
+
                   <div class="input-group">
-                     <label for="stall-number">Stall Number:<b>*</b></label>
-                     <input type="text" id="stall-number" name="stall-number" placeholder="e.g. S-001" required />
+                     <label for="product-source">
+                        Product Source <b>(Optional)</b> <br /><span class="label-translation"
+                           >PINAGMULAN NG PRODUKTO (OPSYONAL):</span
+                        >
+                     </label>
+                     <input
+                        type="text"
+                        id="product-source"
+                        name="product-source"
+                        placeholder="e.g. Local Farm, Distributor"
+                     />
                   </div>
                </div>
 
                <div class="input-group">
-                  <label>Please select Product Type: <i>(Select all that apply)</i><b>*</b></label>
+                  <label>
+                     Please select Market Type: <span class="label-translation">PILIIN ANG URI NG PAMILIHAN:</span>
+                  </label>
+
                   <div class="check-grid">
-                     <label><input type="checkbox" name="mkt-type" value="wet" /> Meat</label>
-                     <label><input type="checkbox" name="mkt-type" value="fish" /> Fish</label>
-                     <label><input type="checkbox" name="mkt-type" value="poultry" /> Poultry</label>
-                     <label><input type="checkbox" name="mkt-type" value="fruits" /> Fruits</label>
-                     <label><input type="checkbox" name="mkt-type" value="vegetables" /> Vegetables</label>
-                     <label><input type="checkbox" name="mkt-type" value="grains" /> Grains</label>
-                     <label><input type="checkbox" name="mkt-type" value="clothing" /> Clothing</label>
-                     <label><input type="checkbox" name="mkt-type" value="household" /> Household Items</label>
-                     <label><input type="checkbox" name="mkt-type" value="grocery" /> Grocery</label>
-                     <label><input type="checkbox" name="mkt-type" value="cooked" /> Cooked Food</label>
-                     <label><input type="checkbox" name="mkt-type" value="other" /> Other</label>
+                     <label>
+                        <input type="checkbox" name="mkt-type" value="wet" />
+                        Wet Goods (e.g. Meat, Fish, Poultry)
+                        <span class="label-translation">MAMASA-MASANG PANINDA (HAL. KARNE, ISDA, MANOK)</span>
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="mkt-type" value="dry" />
+                        Dry Goods (e.g. Grains, Clothing, Household items)
+                        <p class="label-translation">TUYONG PANINDA (HAL. BUTIL, DAMIT, MGA GAMIT SA BAHAY)</p>
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="mkt-type" value="produce" />
+                        Fresh Produce (e.g. Fruits, Vegetables)
+                        <span class="label-translation">SARIWANG ANI (HAL. PRUTAS, GULAY)</span>
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="mkt-type" value="sari" />
+                        Sari-sari (e.g. Grocery, Canned Goods, etc.)
+                        <span class="label-translation">SARI-SARI (HAL. GROSIYERI, DE-LATA, ATBP.)</span>
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="mkt-type" value="food" />
+                        Karinderya (e.g. Cooked Food)
+                        <span class="label-translation">KARINDERYA (HAL. NILUTONG PAGKAIN)</span>
+                     </label>
+
+                     <div class="other-market-option">
+                        <label>
+                           <input type="checkbox" name="mkt-type" value="other" />
+                           Others / Beyond specifications
+                           <span class="label-translation">IBANG URI</span>
+                        </label>
+
+                        <div class="input-group hidden-field">
+                           <input
+                              type="text"
+                              id="other-market-type"
+                              name="other-market-type"
+                              placeholder="e.g. Toys, Clothing, Electronics, Musical Instruments"
+                           />
+                        </div>
+                     </div>
+                     <br />
                   </div>
                </div>
 
-               <div class="input-group">
-                  <label for="product-source">Product Source: <i>(Optional)</i></label>
-                  <input
-                     type="text"
-                     id="product-source"
-                     name="product-source"
-                     placeholder="e.g. Local Farm, Distributor"
-                  />
-               </div>
-               <div class="input-group">
-                  <label for="electricity usage">Electricity Usage / Appliances Used:<b>*</b></label>
+               <div class="input-group margin-10">
+                  <label for="electricity-usage">
+                     Electricity Usage / Appliances Used:
+                     <span class="label-translation">KONSUMO NG KURYENTE / MGA GINAGAMIT NA APARATO:</span>
+                  </label>
                   <input
                      type="text"
                      id="electricity-usage"
                      name="electricity-usage"
-                     placeholder="e.g. Refrigerator, Lighting, etc."
-                     required
+                     placeholder="e.g. Refrigerator, Freezer, Lighting"
                   />
                </div>
-               <div class="input-group">
-                  <label for="sanitation-practice">Pest Control / Sanitation Practice: <i>(Optional)</i></label>
+
+               <div class="input-group margin-10">
+                  <label for="sanitation-practice">
+                     Pest Control / Sanitation Practice:
+                     <span class="label-translation">PAGKOKONTROL SA PESTE / KALINISAN:</span>
+                  </label>
                   <input
                      type="text"
                      id="sanitation-practice"
                      name="sanitation-practice"
-                     placeholder="e.g. Regular fumigation, daily cleaning, etc."
-                     required
+                     placeholder="e.g. Daily cleaning, weekly fumigation"
                   />
                </div>
             </section>
 
-            <!-- Compliance Safety and Documentation -->
+            <!-- Compliance and Safety -->
             <section class="form-section">
-               <h2 class="section-title">Compliance Safety and Documentation</h2>
+               <h2 class="section-title">
+                  Compliance and Safety <span class="label-translation">(Pagsunod at Kaligtasan)</span>
+               </h2>
+
                <div class="input-group">
-                  <label>Government Registration Checklist<b>*</b></label>
-                  <div class="check-item">
-                     <label><input type="checkbox" name="gov-reg" value="permit" /> Business Permit</label>
-                     <label><input type="checkbox" name="gov-reg" value="tin" /> TIN</label>
-                     <label><input type="checkbox" name="gov-reg" value="barangay" /> Barangay Clearance</label>
-                     <label><input type="checkbox" name="gov-reg" value="dti" /> DTI</label>
-                     <label><input type="checkbox" name="gov-reg" value="bir" /> BIR</label>
+                  <label>Government Registration Checklist </label>
+
+                  <div class="check-grid">
+                     <label>
+                        <input type="checkbox" name="gov-reg" value="permit" />
+                        Business Permit
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="gov-reg" value="tin" />
+                        Taxpayer Identification Number (TIN)
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="gov-reg" value="barangay" />
+                        Barangay Clearance
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="gov-reg" value="dti" />
+                        Department of Trade and Industry (DTI)
+                     </label>
+
+                     <label>
+                        <input type="checkbox" name="gov-reg" value="bir" />
+                        Bureau of Internal Revenue (BIR)
+                     </label>
                   </div>
                </div>
 
-               <div class="input-group">
-                  <label for="permitYear">Business Permit Year<b>*</b></label>
-                  <input type="number" id="permitYear" placeholder="YYYY" />
+               <div class="grid-row margin-10">
+                  <div class="input-group">
+                     <label for="permitYear"
+                        >Business Permit Year <br /><span class="label-translation"
+                           >TAON NG PERMISO SA NEGOSYO</span
+                        ></label
+                     >
+
+                     <input
+                        type="number"
+                        id="permitYear"
+                        min="2010"
+                        minlength="4"
+                        max="2040"
+                        name="permitYear"
+                        placeholder="YYYY"
+                     />
+                  </div>
+
+                  <div class="input-group">
+                     <label for="validId"
+                        >Valid Government ID (Upload)
+                        <span class="label-translation">BALIDONG PANG-PAMAHALAANG ID (I-UPLOAD)</span></label
+                     >
+
+                     <input type="file" id="validId" name="validId" accept=".jpg,.jpeg,.png,.pdf" required />
+                  </div>
                </div>
+
                <div class="grid-row">
                   <div class="input-group">
-                     <label for="validId">Valid Government ID (Upload)<b>*</b></label>
-                     <input type="file" id="validId" required />
+                     <label for="proofResidency"
+                        >Proof of Residency (Upload)
+                        <span class="label-translation">PATUNAY NG PANINIRAHAN (I-UPLOAD)</span></label
+                     >
+
+                     <input
+                        type="file"
+                        id="proofResidency"
+                        name="proofResidency"
+                        accept=".jpg,.jpeg,.png,.pdf"
+                        required
+                     />
                   </div>
+
                   <div class="input-group">
-                     <label for="proofResidency">Proof of Residency (Upload)<b>*</b></label>
-                     <input type="file" id="proofResidency" required />
+                     <label for="validHealthCertificate"
+                        >Valid Health Certificate (Upload)
+                        <span class="label-translation">BALIDONG KATIBAYAN SA KALUSUGAN (I-UPLOAD)</span></label
+                     >
+
+                     <input
+                        type="file"
+                        id="validHealthCertificate"
+                        name="validHealthCertificate"
+                        accept=".jpg,.jpeg,.png,.pdf"
+                        required
+                     />
                   </div>
                </div>
-               <div class="input-group">
-                  <label for="sanitaryNum">Sanitary Permit Number<b>*</b></label>
-                  <input type="text" id="sanitaryNum" placeholder="e.g. NP-04-2025-12213" required />
+
+               <div class="grid-row margin-10">
+                  <div class="input-group">
+                     <label for="sanitaryNum"
+                        >Sanitary Permit Number <span class="label-translation">NUMERO NG SANITARY PERMIT</span></label
+                     >
+
+                     <input
+                        type="text"
+                        id="sanitaryNum"
+                        name="sanitaryNum"
+                        placeholder="e.g. NP-04-2025-12213"
+                        required
+                     />
+                  </div>
+
+                  <div class="input-group">
+                     <label for="sanitaryFile">Sanitary Permit File (Upload): </label>
+
+                     <input type="file" id="sanitaryFile" name="sanitaryFile" accept=".jpg,.jpeg,.png,.pdf" required />
+                  </div>
                </div>
 
-               <div class="input-group">
-                  <label for="sanitaryFile">Sanitary Permit File (Upload)<b>*</b></label>
-                  <input type="file" id="sanitaryFile" required />
-               </div>
-
-               <div class="check-item agreement-check">
+               <div class="check-item">
                   <input type="checkbox" id="wasteSeg" name="wasteSeg" required />
-                  <label for="wasteSeg">I agree to the Waste Segregation Agreement<b>*</b></label>
+
+                  <label for="wasteSeg"
+                     >I agree to the Waste Segregation Agreement
+                     <span class="label-translation"
+                        >SUMASANG-AYON AKO SA KASUNDUAN SA PAGHIHIWALAY NG BASURA</span
+                     ></label
+                  >
                </div>
             </section>
 
             <!-- Vendor Organization -->
             <section class="form-section">
-               <h2 class="section-title">Vendor Organization</h2>
+               <h2 class="section-title">
+                  Vendor Organization <span class="label-translation">(Organisasyon o Samahan ng mga Manininda)</span>
+               </h2>
+
                <div class="input-group">
-                  <label>Association Membership<b>*</b></label>
+                  <label
+                     >Association Membership <span class="label-translation">PAGKA-MIYEMBRO NG ASOSASYON</span></label
+                  >
+
                   <div class="radio-row">
-                     <label><input type="radio" name="member" value="yes" /> Yes, I am a member</label>
-                     <label><input type="radio" name="member" value="no" /> No, I am not a member</label>
+                     <label>
+                        <input type="radio" name="member" value="yes" />
+                        Yes
+                     </label>
+
+                     <label>
+                        <input type="radio" name="member" value="no" checked required />
+                        No
+                     </label>
                   </div>
                </div>
+
                <div class="grid-row">
-                  <div class="input-group">
-                     <label for="assoc-name">Association Name <i>(Optional)</i></label>
-                     <input type="text" id="assoc-name" name="assoc-name" />
+                  <div class="input-group hidden-field">
+                     <label for="assoc-name"
+                        >Association Name <span class="label-translation">PANGALAN NG ASOSASYON</span></label
+                     >
+
+                     <input
+                        type="text"
+                        id="assoc-name"
+                        name="assoc-name"
+                        placeholder="e.g. Association of ABC Market Vendors"
+                     />
                   </div>
-                  <div class="input-group">
-                     <label for="assoc-pos">Position <i>(Optional)</i></label>
-                     <input type="text" id="assoc-pos" name="assoc-pos" />
+
+                  <div class="input-group hidden-field">
+                     <label for="assoc-pos">Position <span class="label-translation">POSISYON</span></label>
+
+                     <input type="text" id="assoc-pos" name="assoc-pos" placeholder="e.g. Member, President" />
                   </div>
                </div>
             </section>
 
             <!-- Legal Acknowledgement Section -->
             <section class="form-section">
-               <h2 class="section-title">Legal Acknowledgement</h2>
+               <h2 class="section-title">
+                  Legal Acknowledgement <span class="label-translation">(Legal na Pagkilala o Pananagutan)</span>
+               </h2>
 
                <div class="legal-box">
-                  <p><strong>Terms and Conditions:</strong></p>
                   <p>
+                     <b>Terms and Conditions:</b>
                      By submitting this application, the applicant agrees to abide by the Market Code of the local
                      municipality, including operational hours and stall maintenance.
+                     <br /><span class="label-translation">
+                        Sa pamamagitan ng pagpasa ng aplikasyong ito, ang aplikante ay sumasang-ayon na susunod sa
+                        Market Code ng lokal na munisipalidad, kabilang ang mga oras ng operasyon at pagpapanatili ng
+                        puwesto.
+                     </span>
                   </p>
-                  <p><strong>Affidavit of Undertaking:</strong></p>
-                  <p>I hereby certify that the information provided is true and correct to the best of my knowledge.</p>
+
+                  <p>
+                     <b>Affidavit:</b>
+                     I hereby certify that the information provided is true and correct to the best of my knowledge.
+                     <br /><span class="label-translation">
+                        Pinapatunayan ko rito na ang impormasyong ibinigay ay totoo at tama sa abot ng aking kaalaman.
+                     </span>
+                  </p>
                </div>
 
-               <div class="check-item agreement-check">
+               <div class="check-item margin-10">
                   <input type="checkbox" id="terms" name="terms" required />
-                  <label for="terms">I have read and agree to the Terms and Conditions <b>*</b></label>
+
+                  <label for="terms"
+                     >I have read and agree to the Terms and Conditions
+                     <span class="label-translation"
+                        >NABASA KO AT SANG-AYON AKO SA MGA TUNTUNIN AT KONDISYON</span
+                     ></label
+                  >
                </div>
 
-               <div class="check-item agreement-check">
+               <div class="check-item">
                   <input type="checkbox" id="affidavit" name="affidavit" required />
-                  <label for="affidavit">I certify that all information provided is true and correct <b>*</b></label>
+
+                  <label for="affidavit"
+                     >I certify that all information provided is true and correct
+                     <span class="label-translation"
+                        >PINATUTUNAYAN KO NA ANG LAHAT NG IMPORMASYON AY TAMA AT TOTOO</span
+                     ></label
+                  >
                </div>
 
-               <div class="input-group">
-                  <label for="signature">Digital Signature (Type Full Legal Name)<b>*</b></label>
+               <div class="input-group margin-10">
+                  <label for="signature"
+                     >Digital Signature (Type Full Name)
+                     <span class="label-translation">DIGITAL NA LAGDA (I-TYPE ANG BUONG PANGALAN)</span></label
+                  >
+
                   <input type="text" id="signature" name="signature" placeholder="Signature equivalent" required />
                </div>
             </section>
 
             <div class="actions">
-               <button type="submit" class="submit-btn">Submit Registration</button>
-               <button type="button" class="export-btn">Export to Excel</button>
+               <button type="button" id="clearBtn" class="clear-btn">CLEAR ALL VALUES</button>
+               <button type="submit" class="submit-btn">SUBMIT REGISTRATION</button>
             </div>
          </form>
       </div>
 
-      <div class="form-container">
-         <header class="form-header">
-            <h1>Administrative Section</h1>
-            <p>For administrative review and record-keeping purposes.</p>
-         </header>
-
-         <!-- Administrative Section -->
-         <section class="form-section admin-style">
-            <h2 class="section-title">Administrative Office Use</h2>
-            <div class="input-group">
-               <label for="mkt-assign">Market Assignment</label>
-               <input type="text" id="mkt-assign" name="mkt-assign" />
-            </div>
-            <div class="grid-row">
-               <div class="input-group">
-                  <label for="stall-area">Stall Area (sqm)</label>
-                  <input type="number" id="stall-area" name="stall-area" />
-               </div>
-               <div class="input-group">
-                  <label for="rental-rate">Rental Rate</label>
-                  <input type="number" id="rental-rate" name="rental-rate" step="0.01" />
-               </div>
-            </div>
-            <div class="input-group">
-               <label for="loc-desc">Location Description</label>
-               <input type="text" id="loc-desc" name="loc-desc" />
-            </div>
-            <div class="grid-row">
-               <div class="input-group">
-                  <label for="pay-status">Payment Status</label>
-                  <select id="pay-status" name="pay-status">
-                     <option value="unpaid">Unpaid</option>
-                     <option value="partial">Partial</option>
-                     <option value="paid">Paid</option>
-                  </select>
-               </div>
-               <div class="input-group">
-                  <label for="pay-period">Payment Period</label>
-                  <select id="pay-period" name="pay-period">
-                     <option value="monthly">Monthly</option>
-                     <option value="quarterly">Quarterly</option>
-                  </select>
-               </div>
-            </div>
-         </section>
-
-         <!-- Survey Results Section with SIMULATED DATA -->
-         <section class="form-section result-section">
-            <h2 class="section-title">Registered Vendors</h2>
-            <div class="table-responsive">
-               <table class="survey-table">
-                  <thead>
-                     <tr>
-                        <th>Business Name</th>
-                        <th>Product Type</th>
-                        <th>Permit Number</th>
-                        <th>Sanitary Practices</th>
-                        <th>Compliance Status</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <!-- Simulated Row 1: Compliant Vendor -->
-                     <tr>
-                        <td>Fresh Catch Seafood</td>
-                        <td>Fish</td>
-                        <td>PM-2026-001</td>
-                        <td>Good</td>
-                        <td><span class="status-success">Compliant</span></td>
-                     </tr>
-                     <!-- Simulated Row 2: Non-Compliant Vendor (Warning Highlight) -->
-                     <tr class="warning-row">
-                        <td>Daily Greens</td>
-                        <td>Vegetables</td>
-                        <td>PENDING</td>
-                        <td>Poor</td>
-                        <td><span class="status-error">Non-Compliant</span></td>
-                     </tr>
-                     <!-- Simulated Row 3: Compliant Vendor -->
-                     <tr>
-                        <td>Butcher's Choice</td>
-                        <td>Meat</td>
-                        <td>PM-2026-045</td>
-                        <td>Fair</td>
-                        <td><span class="status-success">Compliant</span></td>
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
-         </section>
-      </div>
+      <script src="script.js"></script>
    </body>
 </html>

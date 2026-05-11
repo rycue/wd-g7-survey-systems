@@ -1,6 +1,27 @@
 console.log("Script launhed successfully.");
 
 let vendorForm = document.getElementById("vendorForm");
+let clearBtn = document.getElementById("clearBtn");
+
+const otherMarketCheckbox = document.querySelector('input[name="mkt-type"][value="other"]');
+const otherMarketTypeInput = document.getElementById("other-market-type");
+const otherMarketTypeGroup = otherMarketTypeInput?.closest(".input-group");
+
+function updateOtherMarketField() {
+  if (!otherMarketCheckbox || !otherMarketTypeGroup || !otherMarketTypeInput) {
+    return;
+  }
+
+  if (otherMarketCheckbox.checked) {
+    otherMarketTypeGroup.classList.remove("hidden-field");
+  } else {
+    otherMarketTypeGroup.classList.add("hidden-field");
+    otherMarketTypeInput.value = "";
+  }
+}
+
+otherMarketCheckbox?.addEventListener("change", updateOtherMarketField);
+updateOtherMarketField();
 
 vendorForm.onsubmit = function (e) {
   // Compliance and Safety: required government ID upload
@@ -19,8 +40,7 @@ vendorForm.onsubmit = function (e) {
     let age = today.getFullYear() - birthDate.getFullYear();
     const hasHadBirthdayThisYear =
       today.getMonth() > birthDate.getMonth() ||
-      (today.getMonth() === birthDate.getMonth() &&
-        today.getDate() >= birthDate.getDate());
+      (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
 
     if (!hasHadBirthdayThisYear) {
       age -= 1;
@@ -86,3 +106,41 @@ vendorForm.onsubmit = function (e) {
 
   console.log("Form validation passed. Submitting form.");
 };
+
+const memberRadios = document.querySelectorAll('input[name="member"]');
+const assocNameGroup = document.querySelector('input[id="assoc-name"]').closest(".input-group");
+const assocPosGroup = document.querySelector('input[id="assoc-pos"]').closest(".input-group");
+const assocNameInput = document.getElementById("assoc-name");
+const assocPosInput = document.getElementById("assoc-pos");
+
+function updateAssocFields() {
+  const isYesChecked = document.querySelector('input[name="member"]:checked')?.value === "yes";
+  if (isYesChecked) {
+    assocNameGroup.classList.remove("hidden-field");
+    assocPosGroup.classList.remove("hidden-field");
+  } else {
+    assocNameGroup.classList.add("hidden-field");
+    assocPosGroup.classList.add("hidden-field");
+    assocNameInput.value = "";
+    assocPosInput.value = "";
+  }
+}
+
+memberRadios.forEach((radio) => {
+  radio.addEventListener("change", updateAssocFields);
+});
+
+updateAssocFields();
+
+function clearAllValues() {
+  var ok = confirm("Are you sure you want to clear all values?");
+  if (!ok) {
+    return;
+  }
+
+  vendorForm.reset();
+  updateOtherMarketField();
+  updateAssocFields();
+}
+
+clearBtn.addEventListener("click", clearAllValues);
