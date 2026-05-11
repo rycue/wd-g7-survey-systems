@@ -537,7 +537,7 @@ body::before {
   background-size: 734px 368px;
   background-position: 0 0;
   animation: bgMove 24s linear infinite;
-  opacity: 0.75;
+  opacity: 0.5;
   will-change: background-position;
 
   z-index: -1;
