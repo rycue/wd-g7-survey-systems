@@ -7,6 +7,7 @@ var clearBtn = document.getElementById("clearBtn");
 if (vendorForm) {
   var marketTypeCheckboxes = document.getElementsByName("mkt-type");
   var firstMarketCheckbox = document.querySelector('input[name="mkt-type"]');
+  var otherMarketCheckbox = document.querySelector('input[name="mkt-type"][value="other"]');
   var otherMarketTypeInput = document.getElementById("other-market-type");
   var otherMarketTypeGroup = otherMarketTypeInput
     ? otherMarketTypeInput.closest(".input-group")
@@ -26,19 +27,16 @@ if (vendorForm) {
     }
 
     firstMarketCheckbox.required = !anyMarketChecked;
-    otherMarketTypeInput.required = otherMarketCheckbox.checked == true;
-
     if (otherMarketCheckbox.checked == true) {
       if (otherMarketTypeGroup) {
         otherMarketTypeGroup.classList.remove("hidden-field");
       }
-      if (otherMarketTypeInput.required == false) {
-        otherMarketTypeInput.required = true;
-      }
+      otherMarketTypeInput.required = true;
     } else {
       if (otherMarketTypeGroup) {
         otherMarketTypeGroup.classList.add("hidden-field");
       }
+      otherMarketTypeInput.required = false;
       otherMarketTypeInput.value = "";
     }
   }
