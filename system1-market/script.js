@@ -112,6 +112,8 @@ vendorForm.onsubmit = function (e) {
   }
 
   console.log("Form validation passed. Submitting form.");
+  e.preventDefault();
+  window.location.href = "success.html";
 };
 
 var memberRadios = document.getElementsByName("member");
@@ -131,9 +133,13 @@ function updateAssocFields() {
   if (selected && selected.value == "yes") {
     assocNameGroup.classList.remove("hidden-field");
     assocPosGroup.classList.remove("hidden-field");
+    assocNameInput.required = true;
+    assocPosInput.required = true;
   } else {
     assocNameGroup.classList.add("hidden-field");
     assocPosGroup.classList.add("hidden-field");
+    assocNameInput.required = false;
+    assocPosInput.required = false;
 
     assocNameInput.value = "";
     assocPosInput.value = "";
@@ -154,7 +160,7 @@ function clearAllValues() {
 
   vendorForm.reset();
 
-  updateOtherMarketField();
+  updateMarketTypeRequired();
   updateAssocFields();
 }
 

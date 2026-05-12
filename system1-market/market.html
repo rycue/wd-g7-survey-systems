@@ -285,7 +285,7 @@
 
                   <div class="check-grid">
                      <label>
-                        <input type="checkbox" name="gov-reg" value="permit" />
+                        <input type="checkbox" name="gov-reg" value="permit" required />
                         Business Permit
                      </label>
 
@@ -324,9 +324,11 @@
                         id="permitYear"
                         min="2010"
                         minlength="4"
+                        maxlength="4"
                         max="2040"
                         name="permitYear"
                         placeholder="YYYY"
+                        required
                      />
                   </div>
 
