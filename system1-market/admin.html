@@ -26,6 +26,34 @@
          <main>
             <!-- Admin Dashboard -->
             <div id="admin-dashboard">
+               <nav class="dashboard-nav" aria-label="Admin dashboard section navigation">
+                  <a href="#recent-submissions-section">Recent Submissions</a>
+                  <a href="#product-tracking-section">Product Tracking</a>
+                  <a href="#payment-section">Payment Status</a>
+                  <a href="#association-tracking-section">Associations</a>
+                  <a href="#permit-expiration-section">Permit Alerts</a>
+                  <a href="#export-section">Export</a>
+               </nav>
+
+               <section class="dashboard-summary" aria-label="Dashboard summary statistics">
+                  <div class="summary-card">
+                     <span class="summary-label">Total Vendors</span>
+                     <strong class="summary-value" id="summary-total-vendors">0</strong>
+                  </div>
+                  <div class="summary-card">
+                     <span class="summary-label">Payment Alerts</span>
+                     <strong class="summary-value" id="summary-payment-alerts">0</strong>
+                  </div>
+                  <div class="summary-card">
+                     <span class="summary-label">Permit Alerts</span>
+                     <strong class="summary-value" id="summary-permit-alerts">0</strong>
+                  </div>
+                  <div class="summary-card">
+                     <span class="summary-label">Association Members</span>
+                     <strong class="summary-value" id="summary-association-members">0</strong>
+                  </div>
+               </section>
+
                <!-- Section 1: Recent Vendor Submissions (Always Visible) -->
                <section class="form-section result-section" id="recent-submissions-section">
                   <h2 class="section-title">Recent Vendor Submissions</h2>
@@ -67,39 +95,55 @@
                   </details>
                </section>
 
-               <!-- Section 3: Payment Period Definitions (Collapsible) -->
-               <section class="form-section result-section" id="payment-period-section">
+               <!-- Section 3: Payment Summary and Period Definitions (Collapsible) -->
+               <section class="form-section result-section" id="payment-section">
                   <details class="collapsible-section">
                      <summary class="collapsible-header">
-                        <span>Payment Period Definitions</span>
+                        <span>Payment Summary and Period Definitions</span>
                         <span class="toggle-arrow">▼</span>
                      </summary>
                      <div class="collapsible-content">
-                        <p class="info-text">Payment periods are determined based on stall number assignments:</p>
-                        <table class="survey-table" id="payment-period-table">
-                           <thead>
-                              <tr>
-                                 <th>Stall Number Range</th>
-                                 <th>Payment Period</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td>1 - 10</td>
-                                 <td>Both (Monthly or Quarterly)</td>
-                              </tr>
-                              <tr>
-                                 <td>11 - 20</td>
-                                 <td>Quarterly</td>
-                              </tr>
-                              <tr>
-                                 <td>21 - 30</td>
-                                 <td>Monthly</td>
-                              </tr>
-                           </tbody>
-                        </table>
+                        <p class="info-text">
+                           Payment status below is grouped the way a market office might review collections and
+                           delinquent accounts.
+                        </p>
+
+                        <div class="payment-summary-cards" id="payment-summary-cards"></div>
+
+                        <div class="table-responsive">
+                           <table class="survey-table" id="payment-period-table">
+                              <thead>
+                                 <tr>
+                                    <th>Stall Number Range</th>
+                                    <th>Payment Period</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>1 - 10</td>
+                                    <td>Both (Monthly or Quarterly)</td>
+                                 </tr>
+                                 <tr>
+                                    <td>11 - 20</td>
+                                    <td>Quarterly</td>
+                                 </tr>
+                                 <tr>
+                                    <td>21 - 30</td>
+                                    <td>Monthly</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+
+                        <div class="payment-status-groups" id="payment-status-groups">
+                           <!-- Populated by JavaScript -->
+                        </div>
+
                         <p class="info-note">
-                           <em>* For demonstration purposes only. Based on sample stall number ranges.</em>
+                           <em>
+                              * Overdue / delinquent means the vendor has missed the expected payment deadline in this
+                              admin view.
+                           </em>
                         </p>
                      </div>
                   </details>
@@ -160,9 +204,76 @@
                      </div>
                   </details>
                </section>
+
+               <!-- Section 6: Simulated Export Panel -->
+               <section class="form-section result-section" id="export-section">
+                  <details class="collapsible-section">
+                     <summary class="collapsible-header">
+                        <span>Excel Export</span>
+                        <span class="toggle-arrow">▼</span>
+                     </summary>
+                     <div class="collapsible-content">
+                        <p class="info-text">
+                           Choose a dataset below to preview the rows that would be prepared for an Excel export.
+                        </p>
+
+                        <div class="grid-row">
+                           <div class="input-group">
+                              <label for="export-dataset">Dataset</label>
+                              <select id="export-dataset" name="export-dataset">
+                                 <option value="all">All Vendors</option>
+                                 <option value="permit-alerts">Permit Alerts</option>
+                                 <option value="payment-alerts">Unpaid / Partially Paid</option>
+                                 <option value="overdue">Overdue / Delinquent</option>
+                                 <option value="association-members">Association Members</option>
+                              </select>
+                           </div>
+                           <div class="input-group">
+                              <label for="export-market-type">Market Type</label>
+                              <select id="export-market-type" name="export-market-type">
+                                 <option value="all">All Market Types</option>
+                                 <option value="wet">Wet Market</option>
+                                 <option value="dry">Dry Goods</option>
+                                 <option value="produce">Produce</option>
+                                 <option value="sari-sari">Sari-Sari Store</option>
+                                 <option value="food-service">Food Service</option>
+                                 <option value="other">Others</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="actions export-actions">
+                           <button type="button" class="export-btn" id="preview-export">Preview Export</button>
+                        </div>
+
+                        <div class="export-preview-meta" id="export-preview-meta">
+                           Excel-ready preview will appear here.
+                        </div>
+
+                        <div class="table-responsive">
+                           <table class="survey-table" id="export-preview-table">
+                              <thead>
+                                 <tr>
+                                    <th>Business Name</th>
+                                    <th>Vendor Name</th>
+                                    <th>Stall Number</th>
+                                    <th>Market Type</th>
+                                    <th>Payment Status</th>
+                                    <th>Permit Status</th>
+                                 </tr>
+                              </thead>
+                              <tbody id="export-preview-body">
+                                 <!-- Populated by JavaScript -->
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </details>
+               </section>
             </div>
          </main>
       </div>
+      <button type="button" class="float-up-btn" id="scroll-to-top" aria-label="Scroll to top">↑</button>
    </body>
    <script src="script.js"></script>
 </html>

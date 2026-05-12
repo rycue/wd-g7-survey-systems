@@ -469,7 +469,7 @@ const vendorDatabase = [
     lastName: "Mercado",
     businessName: "Mixed Provisions Store",
     stallNumber: 4,
-    marketTypes: ["sari-sari", "dry"],
+    marketTypes: ["sari-sari", "dry", "other"],
     productSource: "Bulk Distributors",
     permitNumber: "PM-2026-056",
     permitYear: 2026,
@@ -582,7 +582,104 @@ const vendorDatabase = [
     associationPosition: "Member",
     submissionDate: new Date("2026-04-17"),
   },
+  {
+    id: 25,
+    firstName: "Nestor",
+    lastName: "Bautista",
+    businessName: "Harbor Select Fish",
+    stallNumber: 1,
+    marketTypes: ["wet"],
+    productSource: "Coastal Fishing Cooperative",
+    permitNumber: "PM-2027-011",
+    permitYear: 2027,
+    sanitaryPractices: "Excellent",
+    complianceStatus: "compliant",
+    associationMembership: true,
+    associationName: "Fishermen Association",
+    associationPosition: "Member",
+    submissionDate: new Date("2026-05-12"),
+  },
+  {
+    id: 26,
+    firstName: "Leah",
+    lastName: "Villanueva",
+    businessName: "Fresh Ridge Produce",
+    stallNumber: 2,
+    marketTypes: ["produce"],
+    productSource: "Highland Farm Network",
+    permitNumber: "PM-2027-018",
+    permitYear: 2027,
+    sanitaryPractices: "Excellent",
+    complianceStatus: "compliant",
+    associationMembership: true,
+    associationName: "Producers Guild",
+    associationPosition: "Secretary",
+    submissionDate: new Date("2026-05-12"),
+  },
+  {
+    id: 27,
+    firstName: "Martin",
+    lastName: "Dela Cruz",
+    businessName: "Cornerline Essentials",
+    stallNumber: 3,
+    marketTypes: ["sari-sari", "other"],
+    productSource: "Regional Wholesale Depot",
+    permitNumber: "PM-2027-026",
+    permitYear: 2027,
+    sanitaryPractices: "Excellent",
+    complianceStatus: "compliant",
+    associationMembership: false,
+    associationName: null,
+    associationPosition: null,
+    submissionDate: new Date("2026-05-11"),
+  },
+  {
+    id: 28,
+    firstName: "Jocelyn",
+    lastName: "Pascual",
+    businessName: "Golden Grain Market",
+    stallNumber: 4,
+    marketTypes: ["dry"],
+    productSource: "Central Rice Mill",
+    permitNumber: "PM-2027-030",
+    permitYear: 2027,
+    sanitaryPractices: "Excellent",
+    complianceStatus: "compliant",
+    associationMembership: true,
+    associationName: "Rice Sellers Guild",
+    associationPosition: "Member",
+    submissionDate: new Date("2026-05-11"),
+  },
+  {
+    id: 29,
+    firstName: "Samuel",
+    lastName: "Ramos",
+    businessName: "Morning Plate Kitchen",
+    stallNumber: 5,
+    marketTypes: ["food-service"],
+    productSource: "Local Food Suppliers",
+    permitNumber: "PM-2027-042",
+    permitYear: 2027,
+    sanitaryPractices: "Excellent",
+    complianceStatus: "compliant",
+    associationMembership: true,
+    associationName: "Food Service Alliance",
+    associationPosition: "Treasurer",
+    submissionDate: new Date("2026-05-10"),
+  },
 ];
+
+const MARKET_TYPE_ORDER = ["wet", "dry", "produce", "sari-sari", "food-service", "other"];
+
+function normalizeAdminDemoData() {
+  vendorDatabase.forEach((vendor) => {
+    vendor.paymentStatus = getPaymentStatusInfo(vendor).key;
+    vendor.paymentStatusLabel = getPaymentStatusInfo(vendor).label;
+    vendor.paymentStatusNote = getPaymentStatusInfo(vendor).note;
+  });
+}
+
+normalizeAdminDemoData();
 
 // Utility function: Get recent submissions sorted by date
 function getRecentSubmissions(limit) {
@@ -600,11 +697,20 @@ function getVendorsByMarketType(marketType) {
 
 // Utility function: Get all unique market types
 function getAllMarketTypes() {
-  const types = new Set();
-  vendorDatabase.forEach((vendor) => {
-    vendor.marketTypes.forEach((type) => types.add(type));
-  });
-  return Array.from(types).sort();
+  return MARKET_TYPE_ORDER.slice();
+}
+
+function getMarketTypeLabel(type) {
+  const typeMap = {
+    wet: "Wet Market",
+    dry: "Dry Goods",
+    produce: "Produce",
+    "sari-sari": "Sari-Sari Store",
+    "food-service": "Food Service",
+    other: "Others",
+  };
+
+  return typeMap[type] || type;
 }
 
 // Utility function: Get payment period based on stall number
@@ -617,6 +723,109 @@ function getPaymentPeriodByStallNumber(stallNumber) {
     return "Monthly";
   }
   return "Not Defined";
+}
+
+function getPaymentStatusInfo(vendor) {
+  if (vendor.stallNumber <= 6) {
+    return {
+      key: "paid",
+      label: "Paid",
+      note: "Account settled for the current billing cycle.",
+    };
+  }
+
+  if (vendor.stallNumber <= 12) {
+    return {
+      key: "partial",
+      label: "Partially Paid",
+      note: "Vendor has made a partial remittance and still has a remaining balance.",
+    };
+  }
+
+  if (vendor.stallNumber <= 18) {
+    return {
+      key: "unpaid",
+      label: "Unpaid",
+      note: "No payment recorded for the current cycle.",
+    };
+  }
+
+  return {
+    key: "overdue",
+    label: "Overdue / Delinquent",
+    note: "Past due beyond the grace period in this simulation.",
+  };
+}
+
+function getPaymentStatusClass(statusKey) {
+  if (statusKey === "paid") {
+    return "status-success";
+  }
+
+  if (statusKey === "partial") {
+    return "status-warning";
+  }
+
+  return "status-error";
+}
+
+function getPermitReviewInfo(vendor) {
+  if (vendor.permitNumber === "PENDING") {
+    return {
+      key: "pending",
+      label: "PENDING",
+      className: "status-error",
+    };
+  }
+
+  const permitStatus = getPermitStatus(vendor.permitYear);
+
+  if (permitStatus === "expired") {
+    return {
+      key: permitStatus,
+      label: "Expired",
+      className: "status-error",
+    };
+  }
+
+  if (permitStatus === "expiring-soon") {
+    return {
+      key: permitStatus,
+      label: "Expiring Soon",
+      className: "status-warning",
+    };
+  }
+
+  return {
+    key: "active",
+    label: "Active",
+    className: "status-success",
+  };
+}
+
+function getPaymentSummaryBuckets() {
+  return {
+    paid: vendorDatabase.filter((vendor) => vendor.paymentStatus === "paid"),
+    partial: vendorDatabase.filter((vendor) => vendor.paymentStatus === "partial"),
+    unpaid: vendorDatabase.filter((vendor) => vendor.paymentStatus === "unpaid"),
+    overdue: vendorDatabase.filter((vendor) => vendor.paymentStatus === "overdue"),
+  };
+}
+
+function getDashboardSummaryCounts() {
+  const paymentBuckets = getPaymentSummaryBuckets();
+  const permitAlerts = vendorDatabase.filter((vendor) => {
+    const reviewInfo = getPermitReviewInfo(vendor);
+    return reviewInfo.key !== "active";
+  });
+
+  return {
+    totalVendors: vendorDatabase.length,
+    paymentAlerts:
+      paymentBuckets.partial.length + paymentBuckets.unpaid.length + paymentBuckets.overdue.length,
+    permitAlerts: permitAlerts.length,
+    associationMembers: vendorDatabase.filter((vendor) => vendor.associationMembership).length,
+  };
 }
 
 // Utility function: Check if permit is expired/expiring/active
@@ -641,6 +850,28 @@ function getComplianceBadgeClass(status) {
 // Utility function: Get badge text based on compliance status
 function getComplianceBadgeText(status) {
   return status === "compliant" ? "Compliant" : "Non-Compliant";
+}
+
+function getFilteredExportVendors(dataset, marketType) {
+  let filtered = vendorDatabase.slice();
+
+  if (dataset === "permit-alerts") {
+    filtered = filtered.filter((vendor) => getPermitReviewInfo(vendor).key !== "active");
+  } else if (dataset === "payment-alerts") {
+    filtered = filtered.filter(
+      (vendor) => vendor.paymentStatus === "partial" || vendor.paymentStatus === "unpaid"
+    );
+  } else if (dataset === "overdue") {
+    filtered = filtered.filter((vendor) => vendor.paymentStatus === "overdue");
+  } else if (dataset === "association-members") {
+    filtered = filtered.filter((vendor) => vendor.associationMembership);
+  }
+
+  if (marketType !== "all") {
+    filtered = filtered.filter((vendor) => vendor.marketTypes.includes(marketType));
+  }
+
+  return filtered;
 }
 
 // ===== ADMIN PAGE POPULATION FUNCTIONS =====
@@ -679,10 +910,11 @@ function populateRecentSubmissions() {
 
     const complianceBadgeClass = getComplianceBadgeClass(vendor.complianceStatus);
     const complianceBadgeText = getComplianceBadgeText(vendor.complianceStatus);
+    const marketLabels = vendor.marketTypes.map((marketType) => getMarketTypeLabel(marketType));
 
     row.innerHTML = `
       <td>${vendor.businessName}</td>
-      <td>${vendor.marketTypes.join(", ")}</td>
+      <td>${marketLabels.join(", ")}</td>
       <td>${vendor.stallNumber}</td>
       <td><span class="${complianceBadgeClass}">${complianceBadgeText}</span></td>
       <td><span class="${permitBadgeClass}">${permitBadgeText}</span></td>
@@ -711,7 +943,7 @@ function populateProductSourceTracking() {
     const summary = document.createElement("summary");
     summary.className = "market-type-header";
     summary.innerHTML = `
-      <span class="market-type-title">${capitalizeMarketType(marketType)}</span>
+      <span class="market-type-title">${getMarketTypeLabel(marketType)}</span>
       <span class="market-type-badge">(${vendors.length})</span>
       <span class="toggle-arrow">▼</span>
     `;
@@ -764,7 +996,7 @@ function populateAssociationTracking() {
   vendorDatabase.forEach((vendor) => {
     const row = document.createElement("tr");
 
-    const membershipStatus = vendor.associationMembership ? "✓ Yes" : "No";
+    const membershipStatus = vendor.associationMembership ? "✓ Yes" : "✗ No";
     const assocName = vendor.associationName || "—";
     const assocPos = vendor.associationPosition || "—";
 
@@ -787,8 +1019,8 @@ function populatePermitExpirationTracking() {
 
   // Sort by permit status: expired first, then expiring soon, then active
   const sortedVendors = vendorDatabase.slice().sort((a, b) => {
-    const statusA = a.permitNumber === "PENDING" ? "pending" : getPermitStatus(a.permitYear);
-    const statusB = b.permitNumber === "PENDING" ? "pending" : getPermitStatus(b.permitYear);
+    const statusA = getPermitReviewInfo(a).key;
+    const statusB = getPermitReviewInfo(b).key;
 
     const statusOrder = { pending: 0, expired: 1, "expiring-soon": 2, active: 3 };
     return statusOrder[statusA] - statusOrder[statusB];
@@ -799,21 +1031,7 @@ function populatePermitExpirationTracking() {
   sortedVendors.forEach((vendor) => {
     const row = document.createElement("tr");
 
-    const permitStatus =
-      vendor.permitNumber === "PENDING" ? "pending" : getPermitStatus(vendor.permitYear);
-    let statusBadgeClass = "status-success";
-    let statusBadgeText = "Active";
-
-    if (permitStatus === "pending" || vendor.permitNumber === "PENDING") {
-      statusBadgeClass = "status-error";
-      statusBadgeText = "PENDING";
-    } else if (permitStatus === "expired") {
-      statusBadgeClass = "status-error";
-      statusBadgeText = "Expired";
-    } else if (permitStatus === "expiring-soon") {
-      statusBadgeClass = "status-warning";
-      statusBadgeText = "Expiring Soon";
-    }
+    const permitReviewInfo = getPermitReviewInfo(vendor);
 
     const permitYear = vendor.permitYear || "—";
 
@@ -822,34 +1040,186 @@ function populatePermitExpirationTracking() {
       <td>${vendor.stallNumber}</td>
       <td>${vendor.permitNumber}</td>
       <td>${permitYear}</td>
-      <td><span class="${statusBadgeClass}">${statusBadgeText}</span></td>
+      <td><span class="${permitReviewInfo.className}">${permitReviewInfo.label}</span></td>
     `;
 
     tbody.appendChild(row);
   });
 }
 
-// Helper function: Capitalize market type
-function capitalizeMarketType(type) {
-  const typeMap = {
-    wet: "Wet Market",
-    dry: "Dry Goods",
-    produce: "Produce",
-    "sari-sari": "Sari-Sari Store",
-    "food-service": "Food Service",
-    other: "Other",
+function populateDashboardSummary() {
+  const counts = getDashboardSummaryCounts();
+
+  const totalVendors = document.getElementById("summary-total-vendors");
+  const paymentAlerts = document.getElementById("summary-payment-alerts");
+  const permitAlerts = document.getElementById("summary-permit-alerts");
+  const associationMembers = document.getElementById("summary-association-members");
+
+  if (totalVendors) totalVendors.textContent = String(counts.totalVendors);
+  if (paymentAlerts) paymentAlerts.textContent = String(counts.paymentAlerts);
+  if (permitAlerts) permitAlerts.textContent = String(counts.permitAlerts);
+  if (associationMembers) associationMembers.textContent = String(counts.associationMembers);
+}
+
+function populatePaymentSummarySection() {
+  const summaryCards = document.getElementById("payment-summary-cards");
+  const groupsContainer = document.getElementById("payment-status-groups");
+
+  if (!summaryCards || !groupsContainer) return;
+
+  const buckets = getPaymentSummaryBuckets();
+  const paymentGroups = [
+    { key: "paid", label: "Paid" },
+    { key: "partial", label: "Partially Paid" },
+    { key: "unpaid", label: "Unpaid" },
+    { key: "overdue", label: "Overdue / Delinquent" },
+  ];
+
+  summaryCards.innerHTML = paymentGroups
+    .map((group) => {
+      const count = buckets[group.key].length;
+      return `<div class="payment-summary-chip payment-summary-chip--${group.key}">${group.label}: ${count}</div>`;
+    })
+    .join("");
+
+  groupsContainer.innerHTML = paymentGroups
+    .map((group) => {
+      const vendors = buckets[group.key];
+      const isOpen = group.key === "paid";
+
+      return `
+        <details class="payment-group"${isOpen ? " open" : ""}>
+          <summary class="payment-group-header">
+            <span>${group.label}</span>
+            <span class="market-type-badge">(${vendors.length})</span>
+            <span class="toggle-arrow">▼</span>
+          </summary>
+          <div class="payment-group-content">
+            <div class="table-responsive">
+              <table class="survey-table">
+                <thead>
+                  <tr>
+                    <th>Business Name</th>
+                    <th>Vendor Name</th>
+                    <th>Stall Number</th>
+                    <th>Payment Period</th>
+                    <th>Note</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${
+                    vendors.length > 0
+                      ? vendors
+                          .map((vendor) => {
+                            const paymentInfo = getPaymentStatusInfo(vendor);
+                            return `
+                              <tr>
+                                <td>${vendor.businessName}</td>
+                                <td>${vendor.firstName} ${vendor.lastName}</td>
+                                <td>${vendor.stallNumber}</td>
+                                <td>${getPaymentPeriodByStallNumber(vendor.stallNumber)}</td>
+                                <td>
+                                  <span class="${getPaymentStatusClass(paymentInfo.key)}">${paymentInfo.label}</span>
+                                  <div class="payment-note">${paymentInfo.note}</div>
+                                </td>
+                              </tr>
+                            `;
+                          })
+                          .join("")
+                      : `<tr><td colspan="5">No vendors in this category.</td></tr>`
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      `;
+    })
+    .join("");
+}
+
+function populateExportPreview() {
+  const datasetSelect = document.getElementById("export-dataset");
+  const marketTypeSelect = document.getElementById("export-market-type");
+  const meta = document.getElementById("export-preview-meta");
+  const tbody = document.getElementById("export-preview-body");
+  const previewButton = document.getElementById("preview-export");
+
+  if (!datasetSelect || !marketTypeSelect || !meta || !tbody) return;
+
+  const renderPreview = function () {
+    const selectedDataset = datasetSelect.value;
+    const selectedMarketType = marketTypeSelect.value;
+    const vendors = getFilteredExportVendors(selectedDataset, selectedMarketType);
+
+    const datasetLabelMap = {
+      all: "All Vendors",
+      "permit-alerts": "Permit Alerts",
+      "payment-alerts": "Unpaid / Partially Paid",
+      overdue: "Overdue / Delinquent",
+      "association-members": "Association Members",
+    };
+
+    const datasetLabel = datasetLabelMap[selectedDataset] || "Custom Selection";
+    const marketLabel =
+      selectedMarketType === "all" ? "All Market Types" : getMarketTypeLabel(selectedMarketType);
+
+    meta.textContent = `Previewing ${vendors.length} row(s) for ${datasetLabel} filtered by ${marketLabel}.`;
+
+    tbody.innerHTML =
+      vendors.length > 0
+        ? vendors
+            .map((vendor) => {
+              const paymentInfo = getPaymentStatusInfo(vendor);
+              const permitInfo = getPermitReviewInfo(vendor);
+              const primaryMarketType = getMarketTypeLabel(vendor.marketTypes[0]);
+
+              return `
+                <tr>
+                  <td>${vendor.businessName}</td>
+                  <td>${vendor.firstName} ${vendor.lastName}</td>
+                  <td>${vendor.stallNumber}</td>
+                  <td>${primaryMarketType}</td>
+                  <td><span class="${getPaymentStatusClass(paymentInfo.key)}">${paymentInfo.label}</span></td>
+                  <td><span class="${permitInfo.className}">${permitInfo.label}</span></td>
+                </tr>
+              `;
+            })
+            .join("")
+        : '<tr><td colspan="6">No matching rows for the selected export filter.</td></tr>';
   };
-  return typeMap[type] || type.charAt(0).toUpperCase() + type.slice(1);
+
+  renderPreview();
+
+  if (previewButton) {
+    previewButton.addEventListener("click", renderPreview);
+  }
+}
+
+function setupScrollToTopButton() {
+  const scrollToTopButton = document.getElementById("scroll-to-top");
+
+  if (!scrollToTopButton || !document.getElementById("admin-dashboard")) {
+    return;
+  }
+
+  scrollToTopButton.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 // Initialize admin page on document load
 document.addEventListener("DOMContentLoaded", function () {
   // Check if we're on admin page
   if (document.getElementById("admin-dashboard")) {
+    populateDashboardSummary();
     populateRecentSubmissions();
     populateProductSourceTracking();
+    populatePaymentSummarySection();
     populateAssociationTracking();
     populatePermitExpirationTracking();
+    populateExportPreview();
+    setupScrollToTopButton();
 
     // Setup "Toggle All Market Types" button
     const toggleAllBtn = document.getElementById("toggle-all-markets");

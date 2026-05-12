@@ -648,6 +648,188 @@ INFO TEXT
 }
 
 /*========================
+DASHBOARD NAV + SUMMARY
+========================*/
+
+.dashboard-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.dashboard-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: white;
+  color: var(--brown);
+  text-decoration: none;
+  font-weight: bold;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.dashboard-nav a:hover {
+  background: var(--light);
+  transform: translateY(-1px);
+}
+
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border: 2px dashed var(--border);
+  border-bottom: 3px solid var(--light-brown);
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.summary-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #6a4b41;
+}
+
+.summary-value {
+  font-size: 1.7rem;
+  color: var(--brown);
+}
+
+.payment-summary-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.payment-summary-chip {
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: bold;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.payment-summary-chip--paid {
+  color: var(--success);
+  background: #edf7ee;
+}
+
+.payment-summary-chip--partial {
+  color: #f57c00;
+  background: #fff4e5;
+}
+
+.payment-summary-chip--unpaid,
+.payment-summary-chip--overdue {
+  color: var(--warning);
+  background: #ffebee;
+}
+
+.payment-status-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.payment-group {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.payment-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #6d4c41;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.payment-group-content {
+  padding: 16px;
+  background: white;
+}
+
+.payment-note {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: #6a4b41;
+}
+
+.export-preview-meta {
+  margin-bottom: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8f2ea;
+  border: 1px dashed var(--light-brown);
+  color: #5d4037;
+  font-size: 0.95rem;
+}
+
+.export-actions {
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+.float-up-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 20;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: var(--brown);
+  color: white;
+  box-shadow: 0 10px 22px rgba(75, 44, 36, 0.28);
+
+  font-size: 1.35rem;
+  font-weight: bold;
+  line-height: 1;
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.float-up-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.float-up-btn:focus-visible {
+  outline: 3px solid #f3d38a;
+  outline-offset: 3px;
+}
 
 /*========================
 MOBILE
@@ -685,6 +867,123 @@ MOBILE
 
   .form-container {
     padding: 15px;
+  }
+
+  .dashboard-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard-nav a {
+    width: 100%;
+  }
+
+  .float-up-btn {
+    right: 14px;
+    bottom: 14px;
+    width: 46px;
+    height: 46px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Minimal additional mobile-only tweaks (stacking, touch targets, table tweaks) */
+@media (max-width: 650px) {
+  /* Stack dashboard summary into two columns on small phones */
+  .dashboard-summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Ensure nav pills stack full width and are easy to tap */
+  .dashboard-nav,
+  .top-nav {
+    display: block;
+  }
+  .dashboard-nav a,
+  .top-nav a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 6px 0;
+    padding: 12px 14px;
+  }
+
+  /* Make action buttons full width where appropriate */
+  .actions,
+  .export-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .submit-btn,
+  .export-btn,
+  .preview-btn {
+    width: 100%;
+    padding: 12px 14px;
+    min-height: 44px;
+  }
+
+  /* Table container: keep horizontal scroll but enable smooth touch scrolling */
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+  }
+
+  /* Reduce horizontal padding in table cells for narrow screens */
+  .survey-table th,
+  .survey-table td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+
+  /* Make summary cards slightly larger for touch readability */
+  .summary-card {
+    padding: 12px;
+    min-height: 78px;
+  }
+  .summary-value {
+    font-size: 1.25rem;
+  }
+}
+
+/* Stronger small-phone rules for very narrow screens */
+@media (max-width: 480px) {
+  .dashboard-summary {
+    grid-template-columns: 1fr;
+  }
+  .summary-value {
+    font-size: 1.4rem;
+  }
+
+  /* Further enlarge nav/touch targets */
+  .dashboard-nav a,
+  .top-nav a {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+
+  /* Make small tables more readable: reduce header weight and allow wrapping */
+  .survey-table th {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .survey-table td {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+
+  /* Floating button: respect safe-area and reduce overlap */
+  #scroll-to-top {
+    bottom: calc(env(safe-area-inset-bottom, 12px) + 12px);
+    right: 12px;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Make details summary larger for touch */
+  details summary {
+    padding: 12px 10px;
+    font-size: 1rem;
   }
 }
 
