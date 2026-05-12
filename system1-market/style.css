@@ -8,7 +8,6 @@ COLORS
   --tan: #efe6dc;
   --light: #f1e6dc;
   --border: #d7ccc8;
-  --gold: #b78646;
   --success: #1b5e20;
   --warning: #b71c1c;
 }
@@ -526,6 +525,7 @@ MOBILE
 /*========================
 ANIMATED BACKGROUND
 ========================*/
+/* Reference: https://css-pattern.com/ */
 
 body::before {
   content: "";
