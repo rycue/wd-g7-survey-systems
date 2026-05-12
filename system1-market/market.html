@@ -25,9 +25,9 @@
          <form id="vendorForm">
             <div class="intro-box">
                <p>
-                  <big><strong>Welcome to the Public Market Vendor Registration!</strong></big>
-                  <br />Please fill out the form below to register as a vendor at our market. We look forward to having
-                  you join our community of local businesses and artisans. <br /><span class="label-translation">
+                  <strong>Welcome to the Public Market Vendor Registration!</strong> Please fill out the form below to
+                  register as a vendor at our market. We look forward to having you join our community of local
+                  businesses and artisans. <br /><span class="label-translation">
                      Maligayang pagdating sa Pagpaparehistro ng Vendor sa Pampublikong Pamilihan! Mangyaring punan ang
                      form sa ibaba upang magparehistro bilang isang vendor sa aming pamilihan. Inaasahan namin ang iyong
                      pagsali sa aming komunidad ng mga lokal na negosyo at artisan.
@@ -77,14 +77,22 @@
                      <label for="phone"
                         >Contact Number <span class="label-translation">NUMERO NG TELEPONO:</span></label
                      >
-                     <input type="tel" id="phone" name="phone" placeholder="09123456789" required />
+                     <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        minlength="11"
+                        maxlength="11"
+                        placeholder="09123456789"
+                        required
+                     />
                   </div>
 
                   <div class="input-group">
                      <label for="phone-alt"
                         >Alternate Contact <span class="label-translation">IBA PANG CONTACT:</span></label
                      >
-                     <input type="tel" id="phone-alt" name="phone-alt" placeholder="09987654321" />
+                     <input type="tel" id="phone-alt" name="phone-alt" maxlength="11" placeholder="09987654321" />
                   </div>
                </div>
 
@@ -246,7 +254,8 @@
                      type="text"
                      id="electricity-usage"
                      name="electricity-usage"
-                     placeholder="e.g. Refrigerator, Freezer, Lighting"
+                     placeholder="e.g. Refrigerator, Freezer, Lighting, None..."
+                     required
                   />
                </div>
 
@@ -259,7 +268,8 @@
                      type="text"
                      id="sanitation-practice"
                      name="sanitation-practice"
-                     placeholder="e.g. Daily cleaning, weekly fumigation"
+                     placeholder="e.g. Daily cleaning, Weekly fumigation, None..."
+                     required
                   />
                </div>
             </section>
@@ -431,13 +441,14 @@
                         id="assoc-name"
                         name="assoc-name"
                         placeholder="e.g. Association of ABC Market Vendors"
+                        required
                      />
                   </div>
 
                   <div class="input-group hidden-field">
                      <label for="assoc-pos">Position <span class="label-translation">POSISYON</span></label>
 
-                     <input type="text" id="assoc-pos" name="assoc-pos" placeholder="e.g. Member, President" />
+                     <input type="text" id="assoc-pos" name="assoc-pos" placeholder="e.g. Member, President" required />
                   </div>
                </div>
             </section>
@@ -497,7 +508,14 @@
                      <span class="label-translation">DIGITAL NA LAGDA (I-TYPE ANG BUONG PANGALAN)</span></label
                   >
 
-                  <input type="text" id="signature" name="signature" placeholder="Signature equivalent" required />
+                  <input
+                     type="text"
+                     id="signature"
+                     name="signature"
+                     placeholder="Signature equivalent"
+                     required
+                     class="uppercased"
+                  />
                </div>
             </section>
 

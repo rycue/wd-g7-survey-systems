@@ -262,6 +262,10 @@ select:focus {
   box-shadow: 0 0 0 2px rgb(173, 139, 58);
 }
 
+.uppercased {
+  text-transform: uppercase;
+}
+
 /*========================
 CHECKBOXES + RADIO
 ========================*/

@@ -4,22 +4,57 @@ var vendorForm = document.getElementById("vendorForm");
 var clearBtn = document.getElementById("clearBtn");
 
 var otherMarketCheckbox = document.querySelector('input[name="mkt-type"][value="other"]');
+var marketTypeCheckboxes = document.getElementsByName("mkt-type");
+var firstMarketCheckbox = document.querySelector('input[name="mkt-type"]');
 var otherMarketTypeInput = document.getElementById("other-market-type");
-var otherMarketTypeGroup = document.getElementById("other-market-group");
+var otherMarketTypeGroup = otherMarketTypeInput
+  ? otherMarketTypeInput.closest(".input-group")
+  : null;
 
-function updateOtherMarketField() {
+function updateMarketTypeRequired() {
+  if (!otherMarketCheckbox || !otherMarketTypeInput || !firstMarketCheckbox) {
+    return;
+  }
+
+  var anyMarketChecked = false;
+  for (var i = 0; i < marketTypeCheckboxes.length; i++) {
+    if (marketTypeCheckboxes[i].checked) {
+      anyMarketChecked = true;
+      break;
+    }
+  }
+
+  firstMarketCheckbox.required = !anyMarketChecked;
+  otherMarketTypeInput.required = otherMarketCheckbox.checked == true;
+
   if (otherMarketCheckbox.checked == true) {
-    otherMarketTypeGroup.classList.remove("hidden-field");
+    if (otherMarketTypeGroup) {
+      otherMarketTypeGroup.classList.remove("hidden-field");
+    }
+    if (otherMarketTypeInput.required == false) {
+      otherMarketTypeInput.required = true;
+    }
   } else {
-    otherMarketTypeGroup.classList.add("hidden-field");
+    if (otherMarketTypeGroup) {
+      otherMarketTypeGroup.classList.add("hidden-field");
+    }
     otherMarketTypeInput.value = "";
   }
 }
 
-otherMarketCheckbox.addEventListener("change", updateOtherMarketField);
-updateOtherMarketField();
+for (var i = 0; i < marketTypeCheckboxes.length; i++) {
+  marketTypeCheckboxes[i].addEventListener("change", updateMarketTypeRequired);
+}
+updateMarketTypeRequired();
 
 vendorForm.onsubmit = function (e) {
+  updateMarketTypeRequired();
+
+  if (!vendorForm.reportValidity()) {
+    e.preventDefault();
+    return;
+  }
+
   var file = document.getElementById("validId").value;
   if (file == "") {
     alert("Please upload a valid government ID.");
@@ -61,21 +96,6 @@ vendorForm.onsubmit = function (e) {
     }
   }
 
-  var market = document.getElementsByName("mkt-type");
-  var marketChecked = false;
-
-  for (var i = 0; i < market.length; i++) {
-    if (market[i].checked) {
-      marketChecked = true;
-    }
-  }
-
-  if (marketChecked == false) {
-    alert("Please select at least one market type.");
-    e.preventDefault();
-    return;
-  }
-
   var govt = document.getElementsByName("gov-reg");
   var govtChecked = false;
 
@@ -96,14 +116,17 @@ vendorForm.onsubmit = function (e) {
 
 var memberRadios = document.getElementsByName("member");
 
-var assocNameGroup = document.getElementById("assoc-name-group");
-var assocPosGroup = document.getElementById("assoc-pos-group");
-
 var assocNameInput = document.getElementById("assoc-name");
 var assocPosInput = document.getElementById("assoc-pos");
+var assocNameGroup = assocNameInput ? assocNameInput.closest(".input-group") : null;
+var assocPosGroup = assocPosInput ? assocPosInput.closest(".input-group") : null;
 
 function updateAssocFields() {
   var selected = document.querySelector('input[name="member"]:checked');
+
+  if (!assocNameGroup || !assocPosGroup || !assocNameInput || !assocPosInput) {
+    return;
+  }
 
   if (selected && selected.value == "yes") {
     assocNameGroup.classList.remove("hidden-field");
@@ -135,4 +158,6 @@ function clearAllValues() {
   updateAssocFields();
 }
 
-clearBtn.addEventListener("click", clearAllValues);
+if (clearBtn) {
+  clearBtn.addEventListener("click", clearAllValues);
+}
