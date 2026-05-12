@@ -24,114 +24,144 @@
 
       <div class="form-container">
          <main>
-            <!-- Administrative Section -->
-            <section class="form-section admin-style" id="admin-office-use">
-               <h2 class="section-title">Administrative Office Use</h2>
-               <div class="grid-row">
-                  <div class="input-group">
-                     <label for="mkt-assign">Market Assignment</label>
-                     <input type="text" id="mkt-assign" name="mkt-assign" />
+            <!-- Admin Dashboard -->
+            <div id="admin-dashboard">
+               <!-- Section 1: Recent Vendor Submissions (Always Visible) -->
+               <section class="form-section result-section" id="recent-submissions-section">
+                  <h2 class="section-title">Recent Vendor Submissions</h2>
+                  <div class="table-responsive">
+                     <table class="survey-table" id="recent-submissions-table">
+                        <thead>
+                           <tr>
+                              <th>Business Name</th>
+                              <th>Product Type</th>
+                              <th>Stall Number</th>
+                              <th>Compliance Status</th>
+                              <th>Permit Status</th>
+                           </tr>
+                        </thead>
+                        <tbody id="recent-submissions-body">
+                           <!-- Populated by JavaScript -->
+                        </tbody>
+                     </table>
                   </div>
-                  <div class="input-group">
-                     <label for="stall-area">Stall Area (sqm)</label>
-                     <input type="number" id="stall-area" name="stall-area" />
-                  </div>
-               </div>
-               <div class="grid-row">
-                  <div class="input-group">
-                     <label for="rental-rate">Rental Rate (₱)</label>
-                     <input type="number" id="rental-rate" name="rental-rate" />
-                  </div>
-                  <div class="input-group">
-                     <label for="location-desc">Location Description</label>
-                     <input type="text" id="location-desc" name="location-desc" placeholder="e.g., Block A, Row 3" />
-                  </div>
-               </div>
-               <div class="grid-row">
-                  <div class="input-group">
-                     <label for="pay-status">Payment Status</label>
-                     <select id="pay-status" name="pay-status">
-                        <option value="unpaid">Unpaid</option>
-                        <option value="partial">Partial</option>
-                        <option value="paid">Paid</option>
-                     </select>
-                  </div>
-                  <div class="input-group">
-                     <label for="pay-period">Payment Period</label>
-                     <select id="pay-period" name="pay-period">
-                        <option value="monthly">Monthly</option>
-                        <option value="quarterly">Quarterly</option>
-                     </select>
-                  </div>
-               </div>
-               <div class="grid-row">
-                  <div class="input-group">
-                     <label for="permit-alert">Permit Expiration Alert</label>
-                     <input
-                        type="text"
-                        id="permit-alert"
-                        name="permit-alert"
-                        value="Automated System Feature"
-                        disabled
-                     />
-                  </div>
-               </div>
-               <div class="actions">
-                  <button type="button" class="clear-btn" id="clear-assignment">Clear Form</button>
-                  <button type="button" class="export-btn" id="save-assignment">Save Assignment</button>
-               </div>
-            </section>
+               </section>
 
-            <!-- Survey Results Section with SIMULATED DATA -->
-            <section class="form-section result-section" id="registered-vendors">
-               <h2 class="section-title">Registered Vendors</h2>
-               <div class="table-responsive">
-                  <table class="survey-table">
-                     <thead>
-                        <tr>
-                           <th>Business Name</th>
-                           <th>Product Type</th>
-                           <th>Permit Number</th>
-                           <th>Sanitary Practices</th>
-                           <th>Compliance Status</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>Fresh Catch Seafood</td>
-                           <td>Fish</td>
-                           <td>PM-2026-001</td>
-                           <td>Good</td>
-                           <td>
-                              <span class="status-success">Compliant</span>
-                           </td>
-                        </tr>
-                        <tr class="warning-row">
-                           <td>Daily Greens</td>
-                           <td>Vegetables</td>
-                           <td>PENDING</td>
-                           <td>Poor</td>
-                           <td>
-                              <span class="status-error">Non-Compliant</span>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Butcher's Choice</td>
-                           <td>Meat</td>
-                           <td>PM-2026-045</td>
-                           <td>Fair</td>
-                           <td>
-                              <span class="status-success">Compliant</span>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </section>
+               <!-- Section 2: Product Source Tracking by Market Type (Collapsible) -->
+               <section class="form-section result-section" id="product-tracking-section">
+                  <details class="collapsible-section" open>
+                     <summary class="collapsible-header">
+                        <span>Product Source Tracking by Market Type</span>
+                        <span class="toggle-arrow">▼</span>
+                     </summary>
+                     <div class="collapsible-content">
+                        <div class="market-types-container" id="market-types-container">
+                           <!-- Market type sections populated by JavaScript -->
+                        </div>
+                        <div class="collapsible-actions">
+                           <button type="button" class="toggle-all-btn" id="toggle-all-markets">
+                              Toggle All Market Types
+                           </button>
+                        </div>
+                     </div>
+                  </details>
+               </section>
+
+               <!-- Section 3: Payment Period Definitions (Collapsible) -->
+               <section class="form-section result-section" id="payment-period-section">
+                  <details class="collapsible-section">
+                     <summary class="collapsible-header">
+                        <span>Payment Period Definitions</span>
+                        <span class="toggle-arrow">▼</span>
+                     </summary>
+                     <div class="collapsible-content">
+                        <p class="info-text">Payment periods are determined based on stall number assignments:</p>
+                        <table class="survey-table" id="payment-period-table">
+                           <thead>
+                              <tr>
+                                 <th>Stall Number Range</th>
+                                 <th>Payment Period</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>1 - 10</td>
+                                 <td>Both (Monthly or Quarterly)</td>
+                              </tr>
+                              <tr>
+                                 <td>11 - 20</td>
+                                 <td>Quarterly</td>
+                              </tr>
+                              <tr>
+                                 <td>21 - 30</td>
+                                 <td>Monthly</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="info-note">
+                           <em>* For demonstration purposes only. Based on sample stall number ranges.</em>
+                        </p>
+                     </div>
+                  </details>
+               </section>
+
+               <!-- Section 4: Vendor Association Tracking (Collapsible) -->
+               <section class="form-section result-section" id="association-tracking-section">
+                  <details class="collapsible-section">
+                     <summary class="collapsible-header">
+                        <span>Vendor Association Tracking</span>
+                        <span class="toggle-arrow">▼</span>
+                     </summary>
+                     <div class="collapsible-content">
+                        <div class="table-responsive">
+                           <table class="survey-table" id="association-tracking-table">
+                              <thead>
+                                 <tr>
+                                    <th>Business Name</th>
+                                    <th>Vendor Name</th>
+                                    <th>Membership</th>
+                                    <th>Association Name</th>
+                                    <th>Position</th>
+                                 </tr>
+                              </thead>
+                              <tbody id="association-tracking-body">
+                                 <!-- Populated by JavaScript -->
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </details>
+               </section>
+
+               <!-- Section 5: Permit Expiration Status (Collapsible) -->
+               <section class="form-section result-section" id="permit-expiration-section">
+                  <details class="collapsible-section">
+                     <summary class="collapsible-header">
+                        <span>Permit Expiration Status</span>
+                        <span class="toggle-arrow">▼</span>
+                     </summary>
+                     <div class="collapsible-content">
+                        <div class="table-responsive">
+                           <table class="survey-table" id="permit-expiration-table">
+                              <thead>
+                                 <tr>
+                                    <th>Business Name</th>
+                                    <th>Stall Number</th>
+                                    <th>Permit Number</th>
+                                    <th>Permit Year</th>
+                                    <th>Status</th>
+                                 </tr>
+                              </thead>
+                              <tbody id="permit-expiration-body">
+                                 <!-- Populated by JavaScript -->
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </details>
+               </section>
+            </div>
          </main>
-         <div class="actions">
-            <button type="button" class="export-btn">Export to Excel (Simulated)</button>
-         </div>
       </div>
    </body>
    <script src="script.js"></script>

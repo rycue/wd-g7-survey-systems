@@ -480,12 +480,174 @@ STATUS
   font-weight: bold;
 }
 
+.status-warning {
+  color: #f57c00;
+  font-weight: bold;
+}
+
 .result-section {
   margin-top: 40px;
   padding-top: 20px;
 
   border-top: 3px solid var(--brown);
 }
+
+/*========================
+COLLAPSIBLE SECTIONS
+========================*/
+
+.collapsible-section {
+  margin-bottom: 20px;
+}
+
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding: 16px 20px;
+  margin: 0;
+
+  background: var(--brown);
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.collapsible-header:hover {
+  background: var(--light-brown);
+}
+
+.toggle-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+details[open] .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  padding: 20px;
+  background: white;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+.collapsible-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+
+.toggle-all-btn {
+  padding: 10px 20px;
+  background: var(--light-brown);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.toggle-all-btn:hover {
+  background: var(--brown);
+}
+
+/*========================
+MARKET TYPES SECTION
+========================*/
+
+.market-types-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.market-type-section {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.market-type-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #8b6b5e 0%, #6d5a52 100%);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+
+  transition: background 0.2s;
+}
+
+.market-type-header:hover {
+  background: linear-gradient(135deg, #6d5a52 0%, #5d4a42 100%);
+}
+
+.market-type-title {
+  flex-grow: 1;
+}
+
+.market-type-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.market-type-content {
+  padding: 15px;
+  background: white;
+}
+
+.market-type-content .survey-table {
+  margin-top: 0;
+}
+
+/*========================
+INFO TEXT
+========================*/
+
+.info-text {
+  margin: 0 0 15px 0;
+  font-size: 0.95rem;
+  color: #3e2723;
+}
+
+.info-note {
+  margin: 15px 0 0 0;
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+}
+
+/*========================
 
 /*========================
 MOBILE

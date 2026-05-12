@@ -52,7 +52,6 @@ To register and manage vendor information in public markets, including complianc
 * Payment status tracking (Paid, Unpaid, Partial)
 * Payment period definition (Monthly, Quarterly)
 * Permit expiration alert (simulated)
-* Expandable product categories
 * Vendor association tracking
 * Product source tracking
 * Export to Excel (simulated (?))
